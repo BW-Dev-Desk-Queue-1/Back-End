@@ -5,6 +5,7 @@
 # pubic routes
 ## post: 
 /api/register
+## post:
 /api/login
 
 
