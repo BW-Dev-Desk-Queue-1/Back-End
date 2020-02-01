@@ -10,7 +10,7 @@ const ticketRouter = require('../tickets/ticket-router');
 server.use(express.json());
 
 server.use(cors());
-server.user(helmet());
+server.use(helmet());
 
 // for register and login
 server.use('/api', authRouter);
@@ -22,11 +22,11 @@ server.use('./api/tickets', ticketRouter);
 
 // middleware for all status 500 errors
 
-server((err, req, res, next) => {
-  console.log(err);
-  res.status(500).json({
-    error: err.message
-  });
-});
+// server((err, req, res, next) => {
+//   console.log(err);
+//   res.status(500).json({
+//     error: err.message
+//   });
+// });
 
 module.exports = server;
