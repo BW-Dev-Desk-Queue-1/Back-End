@@ -12,7 +12,7 @@ server.use(express.json());
 
 server.use(cors());
 server.use(helmet());
-
+console.log('here')
 // for register and login
 server.use('/api', authRouter);
 
