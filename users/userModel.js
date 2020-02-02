@@ -51,7 +51,7 @@ function findTicketByUserId(userId, ticketId) {
     const myTicket = await UserDb('tickets')
       .where({ id: ticketId, user_id: userId })
       .first();
-
+    myTicket.resolved = toResolved(myTicket.resolved);
     user.password = '*******';
     const UserTicket = {
       ...user,
