@@ -28,23 +28,23 @@
 
 ## get: get my all tickets
 
-/api/users/:user-id/tickets
+/api/users/:userId/tickets
 
 ## get: get a single ticket with related reactions
 
-/api/users/:user-id/tickets/:ticket-id
+/api/users/:userId/tickets/:ticketId
 
 ## post: create a ticket
 
-/api/users/:user-id/tickets
+/api/users/:userId/tickets
 
 ## put: update a ticket
 
-/api/users/:user-id/tickets/:ticket-id
+/api/users/:userId/tickets/:ticketId
 
 ## delete: delete a ticket
 
-/api/users/:user-id/tickets/:ticket-id
+/api/users/:userId/tickets/:ticketId
 
 # for helpers/admin:
 
@@ -54,34 +54,37 @@
 
 ## get: get a single ticket info with related reactions
 
-/api/tickets/:ticket-id
+/api/tickets/:ticketId
 
 ## post: create a reaction
 
-/api/tickets/:ticket-id/reactions
+/api/tickets/:ticketId/reactions
 
 ## put: update a reaction
 
-/api/tickets/:ticket-id/reactions/:reaction-id
+/api/tickets/:ticketId/reactions/:reactionId
 
 ## delete: delete a reaction
 
-/api/tickets/:ticket-id/reactions/:reaction-id
+/api/tickets/:ticketId/reactions/:reactionId
 
 # Database Schema
 
 ## table: **users**
+
 - id: integer (auto-generated number)
 - username: string (not nullable, unique)
 - password: string (not nullable)
 
 ## table: **helpers**
+
 - id: integer (auto-generated number)
 - username: string (not nullable, unique)
 - password: string (not nullable)
 - accessType: enumeration [helper, admin] (default to 'helper')
 
 ## table: **tickets**
+
 - id: integer (auto-generated number)
 - title: string (not nullable, indexed)
 - description: string
@@ -92,6 +95,7 @@
 - helper_id: integer (foreign-key pointing to id in 'helpers' table)
 
 ## table: **reactions**
+
 - id: integer (auto-generated number)
 - ticket_id: integer (not nullable, foreign-key pointing to id in 'tickets' table)
 - created_at: timestamp
