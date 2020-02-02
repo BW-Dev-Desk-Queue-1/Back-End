@@ -86,7 +86,7 @@
 - title: string (not nullable, indexed)
 - description: string
 - ticketCategory: enumeration [technical, frontOffice] (default to 'frontOffice')
-- created)at: timestamp
+- created_at: timestamp
 - user_id: integer (not nullable, foreign-key pointing to id in 'users' table)
 - resolved: boolean (default to false)
 - helper_id: integer (foreign-key pointing to id in 'helpers' table)
