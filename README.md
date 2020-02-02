@@ -8,27 +8,48 @@
 
 ## for students/helpers/admin
 
-/api/register
+- /api/register
 
 ## post:
 
 ## for students
 
-/api/login
+- /api/login
 
 ## post:
 
 ## for helpers/admin
 
-/api/helpers/login
+- /api/helpers/login
 
 # priviate routes:
 
 # for students/admin/helpers
 
-## get: get my all tickets
+## get: get all tickets for a specific user
 
-/api/users/:userId/tickets
+- /api/users/:userId/tickets
+- [ ] returns:
+
+```js
+  {
+  "id": 2,
+  "username": "james123",
+  "password": "****\*****",
+  "tickets": [
+            {
+            "id": 2,
+            "title": "progress report",
+            "description": "my progress report is not updating since Jan. 2020",
+            "ticketCategory": "technical",
+            "created_at": "2020-02-02 07:34:54",
+            "user_id": 2,
+            "resolved": false,
+            "helper_id": 1
+            }
+            ]
+  }
+```
 
 ## get: get a single ticket with related reactions
 

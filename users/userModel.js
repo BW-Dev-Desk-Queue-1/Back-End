@@ -55,7 +55,7 @@ function findTicketByUserId(userId, ticketId) {
     user.password = '*******';
     const UserTicket = {
       ...user,
-      ticket: myTicket || 'no Ticket Found'
+      ticket: myTicket || 'No Ticket Found'
     };
     return UserTicket;
   });
