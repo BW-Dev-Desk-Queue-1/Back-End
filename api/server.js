@@ -1,18 +1,33 @@
-const express = require('express')
-const cors = require('cors')
-const helmet = require('helmet')
 
-const authenticate = require('../auth/authenticate-middleware.js')
-const authRouter = require('../auth/auth-router.js')
-// const jokesRouter = require('../jokes/jokes-router.js')
+const express = require('express');
+const helmet = require('helmet');
+const cors = require('cors');
+const server = express();
 
-const server = express()
+const userRouter = require('../users/user-router');
+const authRouter = require('../auth/auth-router');
+const ticketRouter = require('../tickets/ticket-router');
 
-server.use(helmet())
-server.use(cors())
-server.use(express.json())
+server.use(express.json());
 
-server.use('/api/auth', authRouter);
-// server.use('/api/users', authenticate, jokesRouter);
+server.use(cors());
+server.use(helmet());
+
+// for register and login
+server.use('/api', authRouter);
+
+// for users
+server.use('/api/users', userRouter);
+// for tickets
+server.use('./api/tickets', ticketRouter);
+
+// middleware for all status 500 errors
+
+// server((err, req, res, next) => {
+//   console.log(err);
+//   res.status(500).json({
+//     error: err.message
+//   });
+// });
 
 module.exports = server;
