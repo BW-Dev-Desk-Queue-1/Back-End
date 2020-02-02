@@ -8,6 +8,7 @@
     "test": "cross-env DB_ENV=testing jest --watch",
     "db:latest": "knex migrate:latest",
     "db:seed": "knex seed:run",
+
     "server": "nodemon index.js",
     "start": "NODE_ENV=production node index.js"
   },
@@ -36,6 +37,7 @@
     "sqlite3": "^4.1.1"
   },
   "devDependencies": {
+    "apidoc": "^0.20.0",
     "cross-env": "^7.0.0",
     "jest": "^25.1.0",
     "nodemon": "^2.0.2",
