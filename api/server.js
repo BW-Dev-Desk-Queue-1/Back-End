@@ -23,11 +23,11 @@ server.use('./api/tickets', ticketRouter);
 
 // middleware for all status 500 errors
 
-// server((err, req, res, next) => {
-//   console.log(err);
-//   res.status(500).json({
-//     error: err.message
-//   });
-// });
+server.use((err, req, res, next) => {
+  console.log(err);
+  res.status(500).json({
+    error: err.message
+  });
+});
 
 module.exports = server;

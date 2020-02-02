@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken')
 const { jwSecret } = require('../config/secrets.js')
 const Users = require('../users/userModel.js')
 
-router.post('/register', (req, res) => {
+router.post('/register', (req, res, next) => {
     let user = req.body
 
     const hash = bcrypt.hashSync(user.password, 5); // 2 ^ n
@@ -17,12 +17,12 @@ router.post('/register', (req, res) => {
             res.status(201).json(user);
         })
         .catch(error => {
-            res.status(500).json(error);
+            next(error);
         })
     
 })
 
-router.post('/login', (req, res) => {
+router.post('/login', (req, res, next) => {
     let { username, password } = req.body
 
     Users.findBy( username )
@@ -39,7 +39,7 @@ router.post('/login', (req, res) => {
             }
         })
         .catch(error => {
-            res.status(500).json(error)
+            next(error);
         })
 })
 
