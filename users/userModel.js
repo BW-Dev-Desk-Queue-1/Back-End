@@ -53,9 +53,11 @@ function findTicketByUserId(userId, ticketId) {
       .first();
     myTicket.resolved = toResolved(myTicket.resolved);
     user.password = '*******';
+    const myReactions = await UserDb('reactions').where('ticket_id', ticketId);
     const UserTicket = {
       ...user,
-      ticket: myTicket || 'No Ticket Found'
+      ticket: myTicket || 'No ticket Found',
+      reactions: myReactions || 'No reaction found'
     };
     return UserTicket;
   });

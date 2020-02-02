@@ -29,13 +29,13 @@
 ## get: get all tickets for a specific user
 
 - /api/users/:userId/tickets
-- [ ] returns:
+- [ ] example returns:
 
 ```js
   {
   "id": 2,
   "username": "james123",
-  "password": "****\*****",
+  "password": "*********",
   "tickets": [
             {
             "id": 2,
@@ -53,7 +53,40 @@
 
 ## get: get a single ticket with related reactions
 
-/api/users/:userId/tickets/:ticketId
+- /api/users/:userId/tickets/:ticketId
+- [ ] example returns:
+
+```js
+{
+    "id": 3,
+    "username": "sunny123",
+    "password": "*******",
+    "ticket": {
+        "id": 3,
+        "title": "Slack",
+        "description": "My userid is not working in Slack",
+        "ticketCategory": "technical",
+        "created_at": "2020-02-02 07:34:54",
+        "user_id": 3,
+        "resolved": false,
+        "helper_id": 3
+    },
+    "reactions": [
+        {
+            "id": 1,
+            "ticket_id": 3,
+            "created_at": "2020-02-02 07:34:54",
+            "notes": "I re-created userId and sent an email to student for trial with new password. will wait for confirmation from the student."
+        },
+        {
+            "id": 3,
+            "ticket_id": 3,
+            "created_at": "2020-02-02 07:34:54",
+            "notes": "the student confirmed the userId is working now"
+        }
+    ]
+}
+```
 
 ## post: create a ticket
 
