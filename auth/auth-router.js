@@ -49,7 +49,8 @@ function signToken(user) {
 
     const payload = {
         userId: user.id,
-        username: user.username
+        username: user.username,
+        userAccessType: user.accessType
     }
 
     const options = {

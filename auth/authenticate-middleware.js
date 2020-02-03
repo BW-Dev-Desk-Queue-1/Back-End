@@ -11,6 +11,7 @@ module.exports = (req, res, next) => {
             if(err) {
                 res.status(401).json({ message: 'you are a teapot. this can\'t be used' })
             } else {
+                // have to get accessType out of decodedToken
                 next()
             }
         })
