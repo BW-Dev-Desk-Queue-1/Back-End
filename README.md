@@ -6,7 +6,7 @@
 
 ## post:
 
-## for students/helpers/admin
+## for students
 
 /api/register
 
@@ -15,6 +15,12 @@
 ## for students
 
 /api/login
+
+## post:
+
+## for helpers/admin
+
+/api/helpers/registger
 
 ## post:
 
@@ -71,17 +77,20 @@
 # Database Schema
 
 ## table: **users**
+
 - id: integer (auto-generated number)
 - username: string (not nullable, unique)
 - password: string (not nullable)
 
 ## table: **helpers**
+
 - id: integer (auto-generated number)
 - username: string (not nullable, unique)
 - password: string (not nullable)
 - accessType: enumeration [helper, admin] (default to 'helper')
 
 ## table: **tickets**
+
 - id: integer (auto-generated number)
 - title: string (not nullable, indexed)
 - description: string
@@ -92,6 +101,7 @@
 - helper_id: integer (foreign-key pointing to id in 'helpers' table)
 
 ## table: **reactions**
+
 - id: integer (auto-generated number)
 - ticket_id: integer (not nullable, foreign-key pointing to id in 'tickets' table)
 - created_at: timestamp
