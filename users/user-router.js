@@ -2,13 +2,25 @@ const router = require('express').Router();
 const User = require('./userModel');
 const authenticate = require('../auth/authenticate-middleware.js');
 
+
+
+
 router.get('/', (req, res) => {
+
   User.find()
     .then(users => {
-      res.json(users);
+      User.getUsersTickets(users).then(tickets => {
+        console.log('returned users', tickets);
+        res.status(200).json(tickets);
+      });
     })
-    .catch(err => res.send(err));
+
+    .catch(err => {
+      console.log('err', err);
+      res.send(err);
+    });
 });
+
 // get all tickets for a user
 router.get('/:userId/tickets', authenticate, (req, res, next) => {
   const { userId } = req.params;
