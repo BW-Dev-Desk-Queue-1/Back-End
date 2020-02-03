@@ -149,7 +149,8 @@
 
 - id: integer (auto-generated number)
 - username: string (not nullable, unique)
-- password: string (not nullable)
+- password: string (not nullable),
+- accessType: enumeration[student] (default to 'student')
 
 ## table: **helpers**
 
