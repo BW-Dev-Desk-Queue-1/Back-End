@@ -9,11 +9,21 @@
 ## for students
 
 - /api/register
+sending to back-end
 ```js
-  {
-    "username" : "samwise 1",
-    "password"	: "gamgee"
-  }
+    {
+    "username" : "samm",
+    "password"	: "gamgee",
+    "accessType" : "student"
+    }
+```
+what back-end returns
+```js
+{
+    "username": "samm",
+    "password": "*******",
+    "accessType": "student"
+}
 ```
 
 
@@ -22,11 +32,21 @@
 ## for students
 
 - /api/login
+send to backend
 ```js
     {
-    "username" : "samwise 1",
+    "username" : "samm",
     "password"	: "gamgee"
-    }
+}
+```
+
+what backend returns
+```js
+
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjUsInVzZXJuYW1lIjoic2FtbSIsInVzZXJBY2Nlc3NUeXBlIjoic3R1ZGVudCIsImlhdCI6MTU4MDc2NjQzNywiZXhwIjoxNTgwODUyODM3fQ.6jgKB-WEHeYvItcbbW7YwRuasO0RTVU3D5MKa6r3xB4"
+}
+
 ```
 ## post:
 
