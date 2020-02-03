@@ -1,4 +1,4 @@
-const router = require('express').Router()
+const router = require('express').Router();
 
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
@@ -63,18 +63,17 @@ router.post('/login', (req, res, next) => {
 
 //hoisted to top of scope
 function signToken(user) {
+  const payload = {
+    userId: user.id,
+    username: user.username,
+    userAccessType: user.accessType
+  };
 
-    const payload = {
-        userId: user.id,
-        username: user.username,
-        userAccessType: user.accessType
-    }
+  const options = {
+    expiresIn: '1d'
+  };
 
-    const options = {
-        expiresIn: '1d'
-    }
-
-    return jwt.sign(payload, jwtSecret, options)
+  return jwt.sign(payload, jwtSecret, options);
 }
 
 function sendResultToUser(req, res, next, user) {
