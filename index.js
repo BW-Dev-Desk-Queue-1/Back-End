@@ -3,7 +3,9 @@ const server = require('./api/server.js');
 const dotenv = require('dotenv');
 
 // Load env variable
-dotenv.config();
+dotenv.config({
+  path: './config/config.env'
+});
 
 const PORT = process.env.PORT || 3003;
 server.listen(PORT, () => {
