@@ -6,7 +6,7 @@
 
 ## post:
 
-## for students/helpers/admin
+## for students
 
 /api/register
 
@@ -15,6 +15,12 @@
 ## for students
 
 /api/login
+
+## post:
+
+## for helpers/admin
+
+/api/helpers/register
 
 ## post:
 
