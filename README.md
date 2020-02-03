@@ -6,9 +6,16 @@
 
 ## post:
 
-## for students/helpers/admin
+## for students
 
 - /api/register
+
+```js
+  {
+    "username" : "samwise 1",
+    "password"	: "gamgee"
+  }
+```
 
 ## post:
 
@@ -16,7 +23,18 @@
 
 - /api/login
 
+```js
+    {
+    "username" : "samwise 1",
+    "password"	: "gamgee"
+    }
+```
+
 ## post:
+
+## for helpers/admin
+
+- /api/helpers/register
 
 ## for helpers/admin
 

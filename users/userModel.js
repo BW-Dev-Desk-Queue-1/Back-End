@@ -1,9 +1,35 @@
 const UserDb = require('../config/dbConfig');
 
 module.exports = {
+  addUser,
+  findByUserName,
+  find,
+
+
   findAllTicketsByUserId,
   findTicketByUserId
 };
+
+// crud for a user (David)
+function find() {
+  return UserDb('users').select('id', 'username', 'password');
+}
+function addUser(user) {
+  return UserDb('users')
+        .insert(user)
+        .then(([id]) => {
+          findByUserId(id)
+        })
+}
+
+function findByUserName(userName) {
+  return UserDb('users')
+        .where('username', userName)
+}
+
+
+
+
 
 function toResolved(bool) {
   if (bool) return true;
