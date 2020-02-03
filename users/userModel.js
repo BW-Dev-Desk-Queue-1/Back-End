@@ -1,12 +1,12 @@
 const UserDb = require('../config/dbConfig');
 // student ID
-  // access own tickets
-  // create new tickets
+// access own tickets
+// create new tickets
 // helper ID
-  // colective ticket pool
-  // see own tickets
-  // reactions
-    // adding comments
+// colective ticket pool
+// see own tickets
+// reactions
+// adding comments
 module.exports = {
   addUser,
   findByUserName,
@@ -40,7 +40,7 @@ function getUsersTickets(users) {
 // const myTickets = await findUserTickets(user.id);
 
 function addUser(user) {
-  console.log('inside addUser')
+  console.log('inside addUser');
   return UserDb('users')
     .insert(user)
     .then(([id]) => {
@@ -80,14 +80,19 @@ function findByUserId(id) {
 // get all tickets for a user
 function findAllTicketsByUserId(id) {
   return findByUserId(id).then(async user => {
-    user.password = '*********';
-    const myTickets = await findUserTickets(id);
+    if (id === `${user.id}`) {
+      user.password = '*********';
+      const myTickets = await findUserTickets(id);
 
-    const toResponse = {
-      ...user,
-      tickets: myTickets
-    };
-    return toResponse;
+      const toResponse = {
+        ...user,
+        tickets: myTickets
+      };
+      return toResponse;
+    } else {
+      const response = 'userID did not match with one in database';
+      return { message: response };
+    }
   });
 }
 
