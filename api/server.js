@@ -9,10 +9,10 @@ const authRouter = require('../auth/auth-router');
 const ticketRouter = require('../tickets/ticket-router');
 
 server.use(express.json());
-
+server.use(logger);
 server.use(cors());
 server.use(helmet());
-console.log('here')
+// console.log(server)
 // for register and login
 server.use('/api', authRouter);
 
@@ -29,5 +29,14 @@ server.use((err, req, res, next) => {
     error: err.message
   });
 });
+function logger(req, res, next) {
+    console.log(
+      `[${new Date().toISOString()}] ${req.method} to ${req.url} from ${req.get(
+        'Origin'
+      )}`
+    );
+  
+    next();
+  }
 
 module.exports = server;
