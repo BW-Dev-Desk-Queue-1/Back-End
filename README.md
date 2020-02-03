@@ -26,7 +26,6 @@ what back-end returns
 }
 ```
 
-
 ## post:
 
 ## for students
@@ -48,9 +47,17 @@ what backend returns
 }
 
 ```
+
 ## post:
 
 ## for helpers/admin
+
+/api/helpers/registger
+
+## post:
+
+## for helpers/admin
+
 
 /api/helpers/register
 
@@ -59,7 +66,6 @@ what backend returns
 ## for helpers/admin
 
 /api/helpers/login
-
 
 
 
@@ -169,7 +175,8 @@ what backend returns
 
 - id: integer (auto-generated number)
 - username: string (not nullable, unique)
-- password: string (not nullable)
+- password: string (not nullable),
+- accessType: enumeration[student] (default to 'student')
 
 ## table: **helpers**
 

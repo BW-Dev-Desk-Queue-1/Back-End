@@ -11,8 +11,7 @@ module.exports = {
   addUser,
   findByUserName,
   find,
-
-
+  getUsersTickets,
   findAllTicketsByUserId,
   findTicketByUserId
 };
@@ -21,22 +20,37 @@ module.exports = {
 function find() {
   return UserDb('users').select('id', 'username', 'password', 'accessType');
 }
+
+function getUsersTickets(users) {
+  const newUsers = users.map(user => {
+    //  UserDb('tickets')
+    //   .where('user_id', user.id)
+    return findUserTickets(user.id).then(tickets => {
+      user = {
+        ...user,
+        password: '*******',
+        tickets: tickets || 'No tickets found'
+      };
+      console.log('user', user);
+      return user;
+    });
+  });
+  return Promise.all(newUsers);
+}
+// const myTickets = await findUserTickets(user.id);
+
 function addUser(user) {
+  console.log('inside addUser')
   return UserDb('users')
-        .insert(user)
-        .then(([id]) => {
-          findByUserId(id)
-        })
+    .insert(user)
+    .then(([id]) => {
+      findByUserId(id);
+    });
 }
 
 function findByUserName(userName) {
-  return UserDb('users')
-        .where('username', userName)
+  return UserDb('users').where('username', userName);
 }
-
-
-
-
 
 function toResolved(bool) {
   if (bool) return true;
@@ -68,7 +82,7 @@ function findAllTicketsByUserId(id) {
   return findByUserId(id).then(async user => {
     user.password = '*********';
     const myTickets = await findUserTickets(id);
-    console.log('mytickets', myTickets);
+
     const toResponse = {
       ...user,
       tickets: myTickets
@@ -84,13 +98,13 @@ function findTicketByUserId(userId, ticketId) {
     const myTicket = await UserDb('tickets')
       .where({ id: ticketId, user_id: userId })
       .first();
-    myTicket.resolved = toResolved(myTicket.resolved);
+    if (myTicket) myTicket.resolved = toResolved(myTicket.resolved);
     user.password = '*******';
     const myReactions = await UserDb('reactions').where('ticket_id', ticketId);
     const UserTicket = {
       ...user,
       ticket: myTicket || 'No ticket Found',
-      reactions: myReactions || 'No reaction found'
+      reactions: myReactions
     };
     return UserTicket;
   });
