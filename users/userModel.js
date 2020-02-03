@@ -22,6 +22,7 @@ function find() {
   return UserDb('users').select('id', 'username', 'password');
 }
 function addUser(user) {
+  console.log('inside addUser')
   return UserDb('users')
         .insert(user)
         .then(([id]) => {
