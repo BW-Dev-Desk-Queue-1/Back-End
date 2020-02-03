@@ -6,7 +6,7 @@
 
 ## post:
 
-## for students/helpers/admin
+## for students
 
 - /api/register
 ```js
@@ -32,7 +32,16 @@
 
 ## for helpers/admin
 
-- /api/helpers/login
+/api/helpers/register
+
+## post:
+
+## for helpers/admin
+
+/api/helpers/login
+
+
+
 
 # priviate routes:
 
