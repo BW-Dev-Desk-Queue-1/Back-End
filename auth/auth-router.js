@@ -11,7 +11,7 @@ router.post('/register', (req, res, next) => {
     const hash = bcrypt.hashSync(user.password, 5); // 2 ^ n
 
     user.password = hash;
-
+    console.log('here')
     Users.addUser(user)
         .then(saved => {
             res.status(201).json(user);
@@ -49,7 +49,8 @@ function signToken(user) {
 
     const payload = {
         userId: user.id,
-        username: user.username
+        username: user.username,
+        userAccessType: user.accessType
     }
 
     const options = {

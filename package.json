@@ -10,7 +10,7 @@
     "db:seed": "knex seed:run",
     "server": "nodemon index.js",
     "startProduction": "NODE_ENV=production node index.js",
-    "start": "NODE_ENV=developement node index.js"
+    "start": "NODE_ENV=production node index.js"
 
   },
   "repository": {

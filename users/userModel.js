@@ -1,5 +1,12 @@
 const UserDb = require('../config/dbConfig');
-
+// student ID
+  // access own tickets
+  // create new tickets
+// helper ID
+  // colective ticket pool
+  // see own tickets
+  // reactions
+    // adding comments
 module.exports = {
   addUser,
   findByUserName,
@@ -9,7 +16,7 @@ module.exports = {
   findTicketByUserId
 };
 
-// crud for a user (David)
+// crud for a user
 function find() {
   return UserDb('users').select('id', 'username', 'password');
 }
@@ -33,6 +40,7 @@ function getUsersTickets(users) {
 // const myTickets = await findUserTickets(user.id);
 
 function addUser(user) {
+  console.log('inside addUser')
   return UserDb('users')
     .insert(user)
     .then(([id]) => {

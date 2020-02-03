@@ -2,8 +2,11 @@ const router = require('express').Router();
 const User = require('./userModel');
 const authenticate = require('../auth/authenticate-middleware.js');
 
-// get all users
-router.get('/', authenticate, (req, res) => {
+
+
+
+router.get('/', (req, res) => {
+
   User.find()
     .then(users => {
       User.getUsersTickets(users).then(tickets => {
