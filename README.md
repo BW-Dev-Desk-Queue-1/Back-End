@@ -10,6 +10,8 @@
 
 - /api/register
 sending to back-end
+- https://dev-help-desk.herokuapp.com/api/register
+
 ```js
     {
     "username" : "samm",
@@ -32,6 +34,10 @@ what back-end returns
 
 - /api/login
 send to backend
+
+- https://dev-help-desk.herokuapp.com/api/login
+
+
 ```js
     {
     "username" : "samm",
@@ -52,12 +58,11 @@ what backend returns
 
 ## for helpers/admin
 
-/api/helpers/registger
+https://dev-help-desk.herokuapp.com/api/helpers/login
 
 ## post:
 
 ## for helpers/admin
-
 
 /api/helpers/register
 
@@ -65,9 +70,7 @@ what backend returns
 
 ## for helpers/admin
 
-/api/helpers/login
-
-
+https://dev-help-desk.herokuapp.com/api/helpers/register
 
 # priviate routes:
 
@@ -75,7 +78,7 @@ what backend returns
 
 ## get: get all tickets for a specific user
 
-- /api/users/:userId/tickets
+- https://dev-help-desk.herokuapp.com/api/users/:userId/tickets
 - [ ] example returns:
 
 ```js
@@ -100,7 +103,7 @@ what backend returns
 
 ## get: get a single ticket with related reactions
 
-- /api/users/:userId/tickets/:ticketId
+- https://dev-help-desk.herokuapp.com/api/users/:userId/tickets/:ticketId
 - [ ] example returns:
 
 ```js
@@ -137,37 +140,124 @@ what backend returns
 
 ## post: create a ticket
 
-/api/users/:userId/tickets
+- https://dev-help-desk.herokuapp.com/api/users/:userId/tickets
 
 ## put: update a ticket
 
-/api/users/:userId/tickets/:ticketId
+- https://dev-help-desk.herokuapp.com/api/users/:userId/tickets/:ticketId
 
 ## delete: delete a ticket
 
-/api/users/:userId/tickets/:ticketId
+- https://dev-help-desk.herokuapp.com/api/users/:userId/tickets/:ticketId
 
 # for helpers/admin:
 
+## get all users and its related tickets
+
+```js
+[
+  {
+    id: 1,
+    username: 'young123',
+    password: '*******',
+    tickets: []
+  },
+  {
+    id: 2,
+    username: 'james123',
+    password: '*******',
+    tickets: [
+      {
+        id: 2,
+        title: 'progress report',
+        description: 'my progress report is not updating since Jan. 2020',
+        ticketCategory: 'technical',
+        created_at: '2020-02-03T20:07:33.748Z',
+        user_id: 2,
+        resolved: false,
+        helper_id: 1
+      }
+    ]
+  },
+  {
+    id: 3,
+    username: 'sunny123',
+    password: '*******',
+    tickets: [
+      {
+        id: 1,
+        title: 'registration question',
+        description: 'When is the next registration deadline?',
+        ticketCategory: 'frontOffice',
+        created_at: '2020-02-03T20:07:33.748Z',
+        user_id: 3,
+        resolved: false,
+        helper_id: 2
+      },
+      {
+        id: 3,
+        title: 'Slack',
+        description: 'My userid is not working in Slack',
+        ticketCategory: 'technical',
+        created_at: '2020-02-03T20:07:33.748Z',
+        user_id: 3,
+        resolved: false,
+        helper_id: 3
+      }
+    ]
+  },
+  {
+    id: 4,
+    username: 'a username',
+    password: '*******',
+    tickets: []
+  },
+  {
+    id: 6,
+    username: 'sam',
+    password: '*******',
+    tickets: []
+  },
+  {
+    id: 7,
+    username: 'sm',
+    password: '*******',
+    tickets: []
+  },
+  {
+    id: 8,
+    username: 'young1231',
+    password: '*******',
+    tickets: []
+  },
+  {
+    id: 9,
+    username: 'young1235',
+    password: '*******',
+    tickets: []
+  }
+];
+```
+
 ## get: get all tickets
 
-/api/tickets
+- https://dev-help-desk.herokuapp.com/api/tickets
 
 ## get: get a single ticket info with related reactions
 
-/api/tickets/:ticketId
+- https://dev-help-desk.herokuapp.com/api/tickets/:ticketId
 
 ## post: create a reaction
 
-/api/tickets/:ticketId/reactions
+- https://dev-help-desk.herokuapp.com/api/tickets/:ticketId/reactions
 
 ## put: update a reaction
 
-/api/tickets/:ticketId/reactions/:reactionId
+- https://dev-help-desk.herokuapp.com/api/tickets/:ticketId/reactions/:reactionId
 
 ## delete: delete a reaction
 
-/api/tickets/:ticketId/reactions/:reactionId
+- https://dev-help-desk.herokuapp.com/api/tickets/:ticketId/reactions/:reactionId
 
 # Database Schema
 
