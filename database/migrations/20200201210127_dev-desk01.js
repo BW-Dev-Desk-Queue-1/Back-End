@@ -4,6 +4,7 @@ exports.up = function(knex) {
       tbl.increments();
       tbl.string('username', 128).notNullable().unique();
       tbl.string('password', 128).notNullable();
+      tbl.enu('accessType', ['student']).defaultTo('student');
    
   })
   .createTable('helpers', tbl => {
