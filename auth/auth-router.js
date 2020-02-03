@@ -81,7 +81,7 @@ function sendResultToUser(req, res, next, user) {
                 
         const token = signToken(user)
 
-        res.status(200).json({ token: token, accessType: user.accessType })
+        res.status(200).json({ token, accessType: user.accessType })
 
     } else {
         res.status(401).json({ message: 'Invalid Credentials'})
