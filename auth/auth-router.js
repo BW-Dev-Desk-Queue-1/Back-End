@@ -12,53 +12,67 @@ router.post('/register', (req, res, next) => {
     const hash = bcrypt.hashSync(user.password, 5); // 2 ^ n
 
     user.password = hash;
-    if(user.accessType === 'student') {
-        // console.log(user)
-        Users.addUser(user)
-            .then(saved => {
-                res.status(201).json({...user, password: '*******'});
-            })
-            .catch(error => {
-                next(error);
-            })
+    // console.log(user)
+    Users.addUser(user)
+        .then(saved => {
+            console.log(saved)
+            res.status(201).json({...saved, password: '*******'});
+        })
+        .catch(error => {
+            // res.send
+            next(error);
+        })
 
-    } else {
-        Helpers.addHelper(user)
-            .then(saved => {
-                res.status(201).json({...user, password: '*******'});
-            })
-            .catch(error => {
-                next(error);
-            })
-    }
+   
     
 })
+// fix helper
+router.post('/helpers/register', (req, res, nex) => {
+    let helper = req.body
+
+    const hash = bcrypt.hashSync(helper.password, 5); // 2 ^ n
+
+    helper.password = hash
+
+    Helpers.addHelper(helper)
+            .then(saved => {
+                res.status(201).json({...saved, password: '*******'});
+            })
+            .catch(error => {
+                console.log('caught')
+                res.status(500).json({ message: 'can\'t add a helper'})
+                // next(error);
+            })
+})
+
 
 router.post('/login', (req, res, next) => {
-    let { username, password, accessType } = req.body
+    let { username, password } = req.body
 
-    if(accessType === 'student') {
-        Users.findByUserName( username )
-        .first()
-        .then(user => {
+    Users.findByUserName( username )
+    .first()
+    .then(user => {
 
-           return sendResultToUser(req, res, next, user, password)
-        })
-        .catch(error => {
-            next(error);
-        })
+        return sendResultToUser(req, res, next, user, password)
+    })
+    .catch(error => {
+        next(error);
+    })
 
-    } else {
-        Helpers.findByHelperName( username )
-        .first()
-        .then(user => {
+    
+})
+router.post('/helpers/login', (req, res, next) => {
+    let { username, password } = req.body
 
-           return sendResultToUser(req, res, next, user)
-        })
-        .catch(error => {
-            next(error);
-        })
-    }
+    Helpers.findByHelperName( username )
+    .first()
+    .then(user => {
+
+       return sendResultToUser(req, res, next, user, password)
+    })
+    .catch(error => {
+        next(error);
+    })
 })
 
 //hoisted to top of scope

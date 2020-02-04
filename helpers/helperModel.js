@@ -18,11 +18,12 @@ module.exports = {
 function find() {
 return HelperDb('helpers').select('id', 'username', 'password', 'accessType');
 }
-function addHelper(user) {
+function addHelper(helper) {
 return HelperDb('helpers')
         .insert(helper)
         .then(([id]) => {
-        findByUserId(id)
+            console.log(id)
+        return findByUserId(id)
         })
 }
 
@@ -37,6 +38,7 @@ return HelperDb('helpers')
 function findByHelperId(id) {
     return HelperDb('helpers')
       .where({ id })
+      .then()
       .first();
   }
   
