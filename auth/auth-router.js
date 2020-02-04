@@ -101,7 +101,7 @@ function sendResultToUser(req, res, next, user, password) {
 
         res.status(200).json({ token, accessType: user.accessType })
 
-
+    // this line needs to be deleted
     res.status(200).json({ token, accessType: user.accessType });
   } else {
     res.status(401).json({ message: 'Invalid Credentials' });
