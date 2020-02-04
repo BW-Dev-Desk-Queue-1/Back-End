@@ -28,7 +28,7 @@ router.post('/register', (req, res, next) => {
     
 })
 // fix helper
-router.post('/helpers/register', (req, res, nex) => {
+router.post('/helpers/register', (req, res, next) => {
     let helper = req.body
 
     const hash = bcrypt.hashSync(helper.password, 5); // 2 ^ n
