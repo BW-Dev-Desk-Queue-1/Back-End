@@ -51,13 +51,13 @@ what back-end returns
 
 ## for helpers/admin
 
-https://dev-help-desk.herokuapp.com/api/helpers/login
+- https://dev-help-desk.herokuapp.com/api/helpers/login
 
 ## post:
 
 ## for helpers/admin
 
-/api/helpers/register
+- /api/helpers/register
 
 ## post:
 
@@ -135,13 +135,48 @@ https://dev-help-desk.herokuapp.com/api/helpers/register
 
 - https://dev-help-desk.herokuapp.com/api/users/:userId/tickets
 
+- [ ] example returns:
+
+```js
+{
+    "id": 7,
+    "title": "Slack",
+    "description": "My userid is not working in Slack",
+    "ticketCategory": "technical",
+    "created_at": "2020-02-04 02:15:36",
+    "tried": "I did make an account but...",
+    "user_id": 13,
+    "resolved": false,
+    "helper_id": null
+}
+```
+
 ## put: update a ticket
 
 - https://dev-help-desk.herokuapp.com/api/users/:userId/tickets/:ticketId
 
+- [ ] example returns:
+
+```js
+{
+    "title": "Slack",
+    "description": "Slack id and password are not working",
+    "ticketCategory": "technical",
+    "tried": "I did make an account but..."
+}
+```
+
 ## delete: delete a ticket
 
 - https://dev-help-desk.herokuapp.com/api/users/:userId/tickets/:ticketId
+
+- [ ] example returns:
+
+```js
+{
+    "message": "successfuly deleted..."
+}
+```
 
 # for helpers/admin:
 

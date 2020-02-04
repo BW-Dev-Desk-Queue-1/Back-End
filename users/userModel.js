@@ -13,7 +13,10 @@ module.exports = {
   find,
   getUsersTickets,
   findAllTicketsByUserId,
-  findTicketByUserId
+  findTicketByUserId,
+  addTicket,
+  updateTicket,
+  deleteTicket
 };
 
 // crud for a user
@@ -79,6 +82,19 @@ function findByUserId(id) {
     .first();
 }
 
+// find a ticket by Id
+function findByTicketId(id) {
+  return UserDb('tickets')
+    .where({ id })
+    .first()
+    .then(ticket => {
+      return {
+        ...ticket,
+        resolved: toResolved(ticket.resolved)
+      };
+    });
+}
+
 // get all tickets for a user
 function findAllTicketsByUserId(id) {
   return findByUserId(id).then(async user => {
@@ -113,7 +129,32 @@ function findTicketByUserId(userId, ticketId) {
 }
 
 // create a ticket for a user
+function addTicket(ticket) {
+  return UserDb('tickets')
+    .insert(ticket)
+    .then(([id]) => {
+      return findByTicketId(id);
+    });
+}
 
 // upate a ticket for a user
+function updateTicket(ticket, ticketId) {
+  return UserDb('tickets')
+    .update(ticket)
+    .where('id', ticketId)
+    .then(num =>
+      num ? ticket : { message: 'Failed to update in the server' }
+    );
+}
 
 // delete a ticket for a user
+function deleteTicket(ticketId) {
+  return UserDb('tickets')
+    .where('id', ticketId)
+    .del()
+    .then(num =>
+      num
+        ? { message: 'successfuly deleted...' }
+        : { message: 'Failed to delete...' }
+    );
+}

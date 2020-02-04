@@ -21,8 +21,7 @@ router.get('/', (req, res) => {
 router.get('/:userId/tickets', authenticate, (req, res, next) => {
   const { userId } = req.params;
 
-  if (userId === req.user.userId) {
-    console.log('req.params', req.params);
+  if (userId === `${req.user.userId}`) {
     User.findAllTicketsByUserId(userId)
       .then(user => res.status(200).json(user))
       .catch(err => next(err));
@@ -36,13 +35,58 @@ module.exports = router;
 // get a single ticket information for a user
 router.get('/:userId/tickets/:ticketId', authenticate, (req, res, next) => {
   const { userId, ticketId } = req.params;
-  User.findTicketByUserId(userId, ticketId)
-    .then(item => res.status(200).json(item))
-    .catch(err => next(err));
+  if (userId === `${req.user.userId}`) {
+    User.findTicketByUserId(userId, ticketId)
+      .then(item => res.status(200).json(item))
+      .catch(err => next(err));
+  } else
+    res.status(401).json({
+      message: 'The userId did not match!!'
+    });
 });
 
 // create a ticket for a user
+router.post('/:userId/tickets', authenticate, (req, res, next) => {
+  const { userId } = req.params;
+  if (userId === `${req.user.userId}`) {
+    let ticket = req.body;
+    ticket = {
+      ...ticket,
+      user_id: req.user.userId
+    };
+    User.addTicket(ticket)
+      .then(item => res.status(201).json(item))
+      .catch(err => next(err));
+  } else
+    res.status(401).json({
+      message: 'The userId did not match!!'
+    });
+});
 
 // upate a ticket for a user
+router.put('/:userId/tickets/:ticketId', authenticate, (req, res, next) => {
+  const { userId, ticketId } = req.params;
+  if (userId === `${req.user.userId}`) {
+    let ticket = req.body;
+
+    User.updateTicket(ticket, ticketId)
+      .then(item => res.status(200).json(item))
+      .catch(err => next(err));
+  } else
+    res.status(401).json({
+      message: 'The userId did not match!!'
+    });
+});
 
 // delete a ticket for a user
+router.delete('/:userId/tickets/:ticketId', authenticate, (req, res, next) => {
+  const { userId, ticketId } = req.params;
+  if (userId === `${req.user.userId}`) {
+    User.deleteTicket(ticketId)
+      .then(item => res.status(200).json(item))
+      .catch(err => next(err));
+  } else
+    res.status(401).json({
+      message: 'The userId did not match!!'
+    });
+});
