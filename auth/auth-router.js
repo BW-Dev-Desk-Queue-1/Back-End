@@ -20,8 +20,8 @@ router.post('/register', (req, res, next) => {
     })
     .catch(error => {
       // res.send
-//       next(error);
-     res.status(201).json({ ...user, password: '*******' });
+      //       next(error);
+      res.status(201).json({ ...user, password: '*******' });
     });
 });
 
@@ -41,8 +41,8 @@ router.post('/helpers/register', (req, res, next) => {
     .catch(error => {
       // console.log('caught')
       //                 res.status(500).json({ message: 'can\'t add a helper'})
-//       next(error);
-     res.status(201).json({ ...helper, password: '*******' });
+      //       next(error);
+      res.status(201).json({ ...helper, password: '*******' });
     });
 });
 
@@ -90,7 +90,9 @@ function sendResultToUser(req, res, next, user, password) {
   if (user && bcrypt.compareSync(password, user.password)) {
     const token = signToken(user);
 
-    res.status(200).json({ token, accessType: user.accessType });
+    res
+      .status(200)
+      .json({ token, accessType: user.accessType, userId: user.id });
   } else {
     res.status(401).json({ message: 'Invalid Credentials' });
   }
