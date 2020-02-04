@@ -34,14 +34,22 @@ what back-end returns
 ## for students
 
 - /api/login
-  send to backend
 
 - https://dev-help-desk.herokuapp.com/api/login
 
+  send to backend
+
+```js
+{
+    "username" : "samm",
+    "password"	: "gamgee"
+    }
+```
+
+  what backend returns
 ```js
     {
-
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQsInVzZXJuYW1lIjoic21pdGgxMjMiLCJ1c2VyQWNjZXNzVHlwZSI6InN0dWRlbnQiLCJpYXQiOjE1ODA3Njk5MjMsImV4cCI6MTU4MDg1NjMyM30.tAjzvG63P6LSbXjVCZnietIsBsI0AmoA9eM9nr_HjPI",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQsInVzZXJuYW1lIjoic2FtbSIsInVzZXJBY2Nlc3NUeXBlIjoic3R1ZGVudCIsImlhdCI6MTU4MDc5MTY2MSwiZXhwIjoxNTgwODc4MDYxfQ.ZNacWbT2m9umvZDBnDe6l6j0D7fbfN8exInmyynmM6M",
     "accessType": "student"
 }
 ```
