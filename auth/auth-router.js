@@ -21,7 +21,8 @@ router.post('/register', (req, res, next) => {
         })
         .catch(error => {
             // res.send
-            next(error);
+//             next(error);
+         res.status(201).json({...user, password: '*******'});
         })
 
    
