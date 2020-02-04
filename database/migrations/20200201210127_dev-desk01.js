@@ -22,6 +22,7 @@ exports.up = function(knex) {
       tbl.string('description', 128);
       tbl.enu('ticketCategory', ['technical', 'frontOffice']).defaultTo('frontOffice');
       tbl.timestamp('created_at').defaultTo(knex.fn.now());
+      tbl.string('tried', 500);
       // ticket opened by user-id
       tbl.integer('user_id')
       .unsigned()

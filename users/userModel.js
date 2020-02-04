@@ -40,11 +40,13 @@ function getUsersTickets(users) {
 // const myTickets = await findUserTickets(user.id);
 
 function addUser(user) {
-  console.log('inside addUser');
   return UserDb('users')
     .insert(user)
     .then(([id]) => {
-      findByUserId(id);
+      // console.log(id)
+      let x = findByUserId(id);
+      // console.log(x)
+      return x;
     });
 }
 

@@ -20,6 +20,7 @@ router.get('/', (req, res) => {
 // get all tickets for a user
 router.get('/:userId/tickets', authenticate, (req, res, next) => {
   const { userId } = req.params;
+
   if (userId === req.user.userId) {
     console.log('req.params', req.params);
     User.findAllTicketsByUserId(userId)
