@@ -59,19 +59,43 @@ what backend returns
 ## for helpers/admin
 
 https://dev-help-desk.herokuapp.com/api/helpers/login
-
-## post:
-
-## for helpers/admin
-
-/api/helpers/register
-
+input to backend
+```js
+    {
+    "username" : "samssssssssss11",
+    "password"	: "gamgeesss",
+    "accessType" : "helper"
+    }
+```
+what backend returns
+```js
+    {
+        "id": 15,
+        "username": "samssssssssss11",
+        "password": "*******",
+        "accessType": "helper"
+    }
+```
 ## post:
 
 ## for helpers/admin
 
 https://dev-help-desk.herokuapp.com/api/helpers/register
-
+input to backend
+```js
+    {
+    "username" : "samssssssssss11",
+    "password"	: "gamgeesss",
+    "accessType" : "helper"
+    }
+```
+output from backend
+```js
+    {
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjE1LCJ1c2VybmFtZSI6InNhbXNzc3Nzc3Nzc3MxMSIsInVzZXJBY2Nlc3NUeXBlIjoiaGVscGVyIiwiaWF0IjoxNTgwNzg4OTEyLCJleHAiOjE1ODA4NzUzMTJ9.Z7Ffe7KitE01y38lr46QUKAegW8tAOXYBN-Vd6tJDuU",
+        "accessType": "helper"
+    }
+```
 # priviate routes:
 
 # for students/admin/helpers

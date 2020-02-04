@@ -36,10 +36,11 @@ router.post('/helpers/register', (req, res, nex) => {
 
     Helpers.addHelper(helper)
             .then(saved => {
+                // console.log('saved helper', saved)
                 res.status(201).json({...saved, password: '*******'});
             })
             .catch(error => {
-                console.log('caught')
+                // console.log('caught')
                 res.status(500).json({ message: 'can\'t add a helper'})
                 // next(error);
             })
