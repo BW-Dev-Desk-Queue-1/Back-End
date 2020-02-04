@@ -47,9 +47,7 @@ function addUser(user) {
     .insert(user)
     .then(([id]) => {
       // console.log(id)
-      let x = findByUserId(id);
-      // console.log(x)
-      return x;
+      return findByUserId(id);
     });
 }
 
