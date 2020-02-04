@@ -130,7 +130,8 @@ function findTicketByUserId(userId, ticketId) {
 function addTicket(ticket) {
   return UserDb('tickets')
     .insert(ticket)
-    .then(([id]) => {
+    .then(result  => {
+      const [id] = result;
       return findByTicketId(id);
     });
 }
