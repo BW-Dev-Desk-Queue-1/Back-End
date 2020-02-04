@@ -44,7 +44,7 @@ router.post('/helpers/register', (req, res, next) => {
                 // console.log('caught')
 //                 res.status(500).json({ message: 'can\'t add a helper'})
 //                 next(error);
-             res.status(201).json({...saved, password: '*******'});
+             res.status(201).json({...helper, password: '*******'});
             })
 })
 
