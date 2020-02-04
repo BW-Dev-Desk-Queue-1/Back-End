@@ -129,7 +129,7 @@ function findTicketByUserId(userId, ticketId) {
 // create a ticket for a user
 function addTicket(ticket) {
   return UserDb('tickets')
-    .insert(ticket, ['id'])
+    .insert(ticket, 'id')
     .then(result => {
       const [id] = result;
       console.log('id,result', id, result);
