@@ -30,15 +30,16 @@ router.post('/helpers/register', (req, res, nex) => {
   const hash = bcrypt.hashSync(helper.password, 5); // 2 ^ n
 
   helper.password = hash;
-
   Helpers.addHelper(helper)
     .then(saved => {
-      res.status(201).json({ ...saved, password: '*******' });
+      // console.log('saved helper', saved)
+      const token = signToken(saved);
+      res.status(201).json({ ...saved, password: '*******', token });
     })
     .catch(error => {
-      console.log('caught');
-      res.status(500).json({ message: "can't add a helper" });
-      // next(error);
+      // console.log('caught')
+      //   res.status(500).json({ message: "can't add a helper" });
+      next(error);
     });
 });
 

@@ -15,8 +15,7 @@
 ```js
     {
     "username" : "samm",
-    "password"	: "gamgee",
-    "accessType" : "student"
+    "password"	: "gamgee"
     }
 ```
 
@@ -35,14 +34,22 @@ what back-end returns
 ## for students
 
 - /api/login
-  send to backend
 
 - https://dev-help-desk.herokuapp.com/api/login
 
+  send to backend
+
+```js
+{
+    "username" : "samm",
+    "password"	: "gamgee"
+    }
+```
+
+  what backend returns
 ```js
     {
-
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQsInVzZXJuYW1lIjoic21pdGgxMjMiLCJ1c2VyQWNjZXNzVHlwZSI6InN0dWRlbnQiLCJpYXQiOjE1ODA3Njk5MjMsImV4cCI6MTU4MDg1NjMyM30.tAjzvG63P6LSbXjVCZnietIsBsI0AmoA9eM9nr_HjPI",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQsInVzZXJuYW1lIjoic2FtbSIsInVzZXJBY2Nlc3NUeXBlIjoic3R1ZGVudCIsImlhdCI6MTU4MDc5MTY2MSwiZXhwIjoxNTgwODc4MDYxfQ.ZNacWbT2m9umvZDBnDe6l6j0D7fbfN8exInmyynmM6M",
     "accessType": "student"
 }
 ```
@@ -51,20 +58,44 @@ what back-end returns
 
 ## for helpers/admin
 
-- https://dev-help-desk.herokuapp.com/api/helpers/login
-
-## post:
-
-## for helpers/admin
-
-- /api/helpers/register
-
+https://dev-help-desk.herokuapp.com/api/helpers/login
+input to backend
+```js
+    {
+    "username" : "samssssssssss11",
+    "password"	: "gamgeesss",
+    "accessType" : "helper"
+    }
+```
+what backend returns
+```js
+    {
+        "id": 15,
+        "username": "samssssssssss11",
+        "password": "*******",
+        "accessType": "helper"
+    }
+```
 ## post:
 
 ## for helpers/admin
 
 https://dev-help-desk.herokuapp.com/api/helpers/register
-
+input to backend
+```js
+    {
+    "username" : "samssssssssss11",
+    "password"	: "gamgeesss",
+    "accessType" : "helper"
+    }
+```
+output from backend
+```js
+    {
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjE1LCJ1c2VybmFtZSI6InNhbXNzc3Nzc3Nzc3MxMSIsInVzZXJBY2Nlc3NUeXBlIjoiaGVscGVyIiwiaWF0IjoxNTgwNzg4OTEyLCJleHAiOjE1ODA4NzUzMTJ9.Z7Ffe7KitE01y38lr46QUKAegW8tAOXYBN-Vd6tJDuU",
+        "accessType": "helper"
+    }
+```
 # priviate routes:
 
 # for students/admin/helpers

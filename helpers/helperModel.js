@@ -11,6 +11,7 @@ module.exports = {
     addHelper,
     findByHelperName,
     find,
+    findByHelperId
     
     
     };
@@ -23,7 +24,7 @@ return HelperDb('helpers')
         .insert(helper)
         .then(([id]) => {
             console.log(id)
-        return findByUserId(id)
+        return findByHelperId(id)
         })
 }
 
@@ -37,8 +38,7 @@ return HelperDb('helpers')
 // find a user by Id
 function findByHelperId(id) {
     return HelperDb('helpers')
-      .where({ id })
-      .then()
+      .where( 'id', id )
       .first();
   }
   
