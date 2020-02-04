@@ -1,7 +1,12 @@
 const router = require('express').Router();
 const User = require('./userModel');
 const authenticate = require('../auth/authenticate-middleware.js');
+console.log('here')
 
+router.get('/find?resolved=false', (req, res) => {
+  console.log(req.query)
+  res.status(200).json({});
+})
 router.get('/', (req, res) => {
   User.find()
     .then(users => {
@@ -16,6 +21,8 @@ router.get('/', (req, res) => {
       res.send(err);
     });
 });
+// You can use get request ‘/api/tickets?resolved=false’
+// which we can access with req.query object
 
 // get all tickets for a user
 router.get('/:userId/tickets', authenticate, (req, res, next) => {

@@ -19,7 +19,9 @@ server.use('/api', authRouter);
 // for users
 server.use('/api/users', userRouter);
 // for tickets
-server.use('./api/tickets', ticketRouter);
+// console.log('here')
+
+server.use('/api/tickets', ticketRouter);
 
 // middleware for all status 500 errors
 
