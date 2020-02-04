@@ -18,7 +18,7 @@ module.exports = {
 
 // crud for a user
 function find() {
-  return UserDb('users').select('id', 'username', 'password');
+  return UserDb('users').select('id', 'username', 'password', 'accessType');
 }
 
 function getUsersTickets(users) {
