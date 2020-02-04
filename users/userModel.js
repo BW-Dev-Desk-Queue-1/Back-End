@@ -44,7 +44,7 @@ function getUsersTickets(users) {
 
 function addUser(user) {
   return UserDb('users')
-    .insert(user)
+    .insert(user, 'id')
     .then(([id]) => {
       // console.log(id)
       return findByUserId(id);
@@ -132,7 +132,7 @@ function addTicket(ticket) {
     .insert(ticket, 'id')
     .then(result => {
       const [id] = result;
-      console.log('id,result', id, result);
+
       return findByTicketId(id);
     });
 }

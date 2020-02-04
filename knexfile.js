@@ -17,7 +17,7 @@ module.exports = {
       afterCreate: (conn, done) => {
         // runs after a connection is made to the sqlite engine
         conn.run('PRAGMA foreign_keys = ON', done); // turn on FK enforcement
-      },
+      }
     }
   },
 
@@ -37,7 +37,7 @@ module.exports = {
       afterCreate: (conn, done) => {
         // runs after a connection is made to the sqlite engine
         conn.run('PRAGMA foreign_keys = ON', done); // turn on FK enforcement
-      },
+      }
     }
   },
   production: {
@@ -46,6 +46,8 @@ module.exports = {
     migrations: {
       directory: './database/migrations'
     },
+    ssl: true,
+
     seeds: {
       directory: './database/seeds'
     }
