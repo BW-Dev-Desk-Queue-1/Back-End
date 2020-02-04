@@ -18,7 +18,7 @@ module.exports = {
 
 // crud for a user
 function find() {
-  return UserDb('users').select('id', 'username', 'password');
+  return UserDb('users').select('id', 'username', 'password', 'accessType');
 }
 
 function getUsersTickets(users) {
@@ -80,19 +80,14 @@ function findByUserId(id) {
 // get all tickets for a user
 function findAllTicketsByUserId(id) {
   return findByUserId(id).then(async user => {
-    if (id === `${user.id}`) {
-      user.password = '*********';
-      const myTickets = await findUserTickets(id);
+    user.password = '*********';
+    const myTickets = await findUserTickets(id);
 
-      const toResponse = {
-        ...user,
-        tickets: myTickets
-      };
-      return toResponse;
-    } else {
-      const response = 'userID did not match with one in database';
-      return { message: response };
-    }
+    const toResponse = {
+      ...user,
+      tickets: myTickets
+    };
+    return toResponse;
   });
 }
 

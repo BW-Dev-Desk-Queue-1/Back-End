@@ -8,23 +8,40 @@
 
 ## for students
 
+- /api/register
+  sending to back-end
 - https://dev-help-desk.herokuapp.com/api/register
 
 ```js
-  {
-    "username" : "samwise 1",
-    "password"	: "gamgee"
-  }
+    {
+    "username" : "samm",
+    "password"	: "gamgee",
+    "accessType" : "student"
+    }
+```
+
+what back-end returns
+
+```js
+{
+    "username": "samm",
+    "password": "*******",
+    "accessType": "student"
+}
 ```
 
 ## post:
 
 ## for students
 
+- /api/login
+  send to backend
+
 - https://dev-help-desk.herokuapp.com/api/login
 
 ```js
     {
+
     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQsInVzZXJuYW1lIjoic21pdGgxMjMiLCJ1c2VyQWNjZXNzVHlwZSI6InN0dWRlbnQiLCJpYXQiOjE1ODA3Njk5MjMsImV4cCI6MTU4MDg1NjMyM30.tAjzvG63P6LSbXjVCZnietIsBsI0AmoA9eM9nr_HjPI",
     "accessType": "student"
 }

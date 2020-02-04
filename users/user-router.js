@@ -2,11 +2,7 @@ const router = require('express').Router();
 const User = require('./userModel');
 const authenticate = require('../auth/authenticate-middleware.js');
 
-
-
-
 router.get('/', (req, res) => {
-
   User.find()
     .then(users => {
       User.getUsersTickets(users).then(tickets => {
@@ -24,10 +20,15 @@ router.get('/', (req, res) => {
 // get all tickets for a user
 router.get('/:userId/tickets', authenticate, (req, res, next) => {
   const { userId } = req.params;
-  console.log('req.params', req.params);
-  User.findAllTicketsByUserId(userId)
-    .then(user => res.status(200).json(user))
-    .catch(err => next(err));
+  if (userId === req.user.userId) {
+    console.log('req.params', req.params);
+    User.findAllTicketsByUserId(userId)
+      .then(user => res.status(200).json(user))
+      .catch(err => next(err));
+  } else
+    res.status(401).json({
+      message: 'the userId did not match!!'
+    });
 });
 module.exports = router;
 
