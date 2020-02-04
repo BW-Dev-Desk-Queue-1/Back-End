@@ -282,6 +282,7 @@ https://dev-help-desk.herokuapp.com/api/helpers/register
 - description: string
 - ticketCategory: enumeration [technical, frontOffice] (default to 'frontOffice')
 - created_at: timestamp
+- tried: string
 - user_id: integer (not nullable, foreign-key pointing to id in 'users' table)
 - resolved: boolean (default to false)
 - helper_id: integer (foreign-key pointing to id in 'helpers' table)

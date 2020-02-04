@@ -42,7 +42,7 @@ router.post('/login', (req, res, next) => {
         .first()
         .then(user => {
 
-           return sendResultToUser(req, res, next, user)
+           return sendResultToUser(req, res, next, user, password)
         })
         .catch(error => {
             next(error);
@@ -76,7 +76,7 @@ function signToken(user) {
   return jwt.sign(payload, jwtSecret, options);
 }
 
-function sendResultToUser(req, res, next, user) {
+function sendResultToUser(req, res, next, user, password) {
     if(user && bcrypt.compareSync(password, user.password)) {
                 
         const token = signToken(user)
