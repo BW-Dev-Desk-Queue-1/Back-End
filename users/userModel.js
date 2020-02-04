@@ -152,9 +152,8 @@ function deleteTicket(ticketId) {
   return UserDb('tickets')
     .where('id', ticketId)
     .del()
-    .then(num =>
-      num
-        ? { message: 'successfuly deleted...' }
-        : { message: 'Failed to delete...' }
-    );
+    .then(num => {
+      if (num === 1) return { message: 'successfuly deleted...' };
+      else return { message: 'Failed to delete...' };
+    });
 }
