@@ -301,6 +301,43 @@ output from backend
 ## get: get all tickets
 
 - https://dev-help-desk.herokuapp.com/api/tickets/get
+```js
+  [
+    {
+        "id": 1,
+        "title": "registration question",
+        "description": "When is the next registration deadline?",
+        "ticketCategory": "frontOffice",
+        "created_at": "2020-02-04 01:42:22",
+        "tried": "",
+        "user_id": 3,
+        "resolved": 0,
+        "helper_id": 2
+    },
+    {
+        "id": 2,
+        "title": "progress report",
+        "description": "my progress report is not updating since Jan. 2020",
+        "ticketCategory": "technical",
+        "created_at": "2020-02-04 01:42:22",
+        "tried": "I restarted the computer",
+        "user_id": 2,
+        "resolved": 0,
+        "helper_id": 1
+    },
+    {
+        "id": 3,
+        "title": "Slack",
+        "description": "My userid is not working in Slack",
+        "ticketCategory": "technical",
+        "created_at": "2020-02-04 01:42:22",
+        "tried": "I did make an account but...",
+        "user_id": 3,
+        "resolved": 0,
+        "helper_id": 3
+    }
+]
+```
 
 ## get: get a single ticket info with related reactions
 
