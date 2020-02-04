@@ -23,22 +23,23 @@ router.post('/register', (req, res, next) => {
       next(error);
     });
 });
+
 // fix helper
-router.post('/helpers/register', (req, res, nex) => {
+router.post('/helpers/register', (req, res, next) => {
   let helper = req.body;
 
   const hash = bcrypt.hashSync(helper.password, 5); // 2 ^ n
 
   helper.password = hash;
+
   Helpers.addHelper(helper)
     .then(saved => {
       // console.log('saved helper', saved)
-      const token = signToken(saved);
-      res.status(201).json({ ...saved, password: '*******', token });
+      res.status(201).json({ ...saved, password: '*******' });
     })
     .catch(error => {
       // console.log('caught')
-      //   res.status(500).json({ message: "can't add a helper" });
+      //                 res.status(500).json({ message: 'can\'t add a helper'})
       next(error);
     });
 });
@@ -86,8 +87,6 @@ function signToken(user) {
 function sendResultToUser(req, res, next, user, password) {
   if (user && bcrypt.compareSync(password, user.password)) {
     const token = signToken(user);
-
-    res.status(200).json({ token, accessType: user.accessType });
 
     res.status(200).json({ token, accessType: user.accessType });
   } else {
