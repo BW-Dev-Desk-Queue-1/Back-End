@@ -27,6 +27,9 @@ router.post('/register', (req, res, next) => {
    
     
 })
+// You can use get request ‘/api/tickets?resolved=false’ which we can access with req.query object
+// ermaining endpoints for reactions and gettng all tickets
+
 // fix helper
 router.post('/helpers/register', (req, res, nex) => {
     let helper = req.body
