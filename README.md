@@ -15,8 +15,7 @@
 ```js
     {
     "username" : "samm",
-    "password"	: "gamgee",
-    "accessType" : "student"
+    "password"	: "gamgee"
     }
 ```
 
