@@ -153,6 +153,7 @@ function deleteTicket(ticketId) {
     .where('id', ticketId)
     .del()
     .then(num => {
+      console.log('num', num);
       if (num === 1) return { message: 'successfuly deleted...' };
       else return { message: 'Failed to delete...' };
     });
