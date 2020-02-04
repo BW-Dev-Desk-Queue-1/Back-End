@@ -47,7 +47,7 @@ router.get('/:userId/tickets/:ticketId', authenticate, (req, res, next) => {
 
 // create a ticket for a user
 router.post('/:userId/tickets', authenticate, (req, res, next) => {
-  const { userId } = req.params;
+  const userId = req.params.userId;
   console.log('req.user.id', req.user.userId);
   if (userId === `${req.user.userId}`) {
     let ticket = req.body;
