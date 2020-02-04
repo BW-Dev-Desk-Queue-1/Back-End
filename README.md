@@ -300,7 +300,7 @@ output from backend
 
 ## get: get all tickets
 
-- https://dev-help-desk.herokuapp.com/api/tickets
+- https://dev-help-desk.herokuapp.com/api/tickets/get
 
 ## get: get a single ticket info with related reactions
 

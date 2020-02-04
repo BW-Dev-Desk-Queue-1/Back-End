@@ -16,14 +16,19 @@ module.exports = {
   findTicketByUserId,
   addTicket,
   updateTicket,
-  deleteTicket
+  deleteTicket,
+
+
+  filterTickets,
+  getAllTickets
 };
 
-// crud for a user
+// part of crud for a user
+// David's code
 function find() {
   return UserDb('users').select('id', 'username', 'password', 'accessType');
 }
-
+//////
 function getUsersTickets(users) {
   const newUsers = users.map(user => {
     //  UserDb('tickets')
@@ -42,6 +47,7 @@ function getUsersTickets(users) {
 }
 // const myTickets = await findUserTickets(user.id);
 
+/// David's code
 function addUser(user) {
   return UserDb('users')
     .insert(user)
@@ -54,6 +60,7 @@ function addUser(user) {
 function findByUserName(userName) {
   return UserDb('users').where('username', userName);
 }
+////
 
 function toResolved(bool) {
   if (bool) return true;
@@ -156,3 +163,16 @@ function deleteTicket(ticketId) {
         : { message: 'Failed to delete...' }
     );
 }
+/// David's code
+
+function filterTickets(isResolved) {
+  return UserDb('tickets')
+    .where('resolved', '=', isResolved === 'true'? true: false)
+    
+}
+
+function getAllTickets() {
+  return UserDb('tickets')
+      .select('*')
+}
+///

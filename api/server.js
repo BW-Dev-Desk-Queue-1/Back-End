@@ -6,7 +6,7 @@ const server = express();
 
 const userRouter = require('../users/user-router');
 const authRouter = require('../auth/auth-router');
-const ticketRouter = require('../tickets/ticket-router');
+// const ticketRouter = require('../tickets/ticket-router');
 
 server.use(express.json());
 server.use(logger);
@@ -21,7 +21,7 @@ server.use('/api/users', userRouter);
 // for tickets
 // console.log('here')
 
-server.use('/api/tickets', ticketRouter);
+server.use('/api/tickets', userRouter);
 
 // middleware for all status 500 errors
 

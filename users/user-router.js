@@ -1,11 +1,19 @@
 const router = require('express').Router();
 const User = require('./userModel');
 const authenticate = require('../auth/authenticate-middleware.js');
-console.log('here')
+// console.log('here')
 
-router.get('/find?resolved=false', (req, res) => {
-  console.log(req.query)
-  res.status(200).json({});
+router.get('/find', (req, res) => {
+  // console.log(req.query)
+  User.filterTickets(req.query.resolved)
+    .then(tickets => {
+      console.log('tickets', tickets)
+      if(tickets.length > 0) {
+        res.status(200).json(tickets)
+      } else {
+        res.status(500).json({message: `There are no ${req.query.resolved === 'true'? 'resolved': 'unresolved'} tickets`})
+      }
+    })
 })
 router.get('/', (req, res) => {
   User.find()
@@ -97,3 +105,16 @@ router.delete('/:userId/tickets/:ticketId', authenticate, (req, res, next) => {
       message: 'The userId did not match!!'
     });
 });
+
+// my code
+router.get('/get', (req, res) => {
+  User.getAllTickets()
+    .then(tickets => {
+      res.status(200).json(tickets)
+      // console.log(tickets)
+    })
+    .catch(err => {
+      res.status(401).json({message: 'Cannot get tickets'})
+    })
+})
+//
