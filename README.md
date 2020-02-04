@@ -9,7 +9,7 @@
 ## for students
 
 - /api/register
-sending to back-end
+  sending to back-end
 - https://dev-help-desk.herokuapp.com/api/register
 
 ```js
@@ -19,7 +19,9 @@ sending to back-end
     "accessType" : "student"
     }
 ```
+
 what back-end returns
+
 ```js
 {
     "username": "samm",
@@ -33,38 +35,29 @@ what back-end returns
 ## for students
 
 - /api/login
-send to backend
+  send to backend
 
 - https://dev-help-desk.herokuapp.com/api/login
 
-
 ```js
     {
-    "username" : "samm",
-    "password"	: "gamgee"
+
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQsInVzZXJuYW1lIjoic21pdGgxMjMiLCJ1c2VyQWNjZXNzVHlwZSI6InN0dWRlbnQiLCJpYXQiOjE1ODA3Njk5MjMsImV4cCI6MTU4MDg1NjMyM30.tAjzvG63P6LSbXjVCZnietIsBsI0AmoA9eM9nr_HjPI",
+    "accessType": "student"
 }
-```
-
-what backend returns
-```js
-
-{
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjUsInVzZXJuYW1lIjoic2FtbSIsInVzZXJBY2Nlc3NUeXBlIjoic3R1ZGVudCIsImlhdCI6MTU4MDc2NjQzNywiZXhwIjoxNTgwODUyODM3fQ.6jgKB-WEHeYvItcbbW7YwRuasO0RTVU3D5MKa6r3xB4"
-}
-
 ```
 
 ## post:
 
 ## for helpers/admin
 
-https://dev-help-desk.herokuapp.com/api/helpers/login
+- https://dev-help-desk.herokuapp.com/api/helpers/login
 
 ## post:
 
 ## for helpers/admin
 
-/api/helpers/register
+- /api/helpers/register
 
 ## post:
 
@@ -142,13 +135,48 @@ https://dev-help-desk.herokuapp.com/api/helpers/register
 
 - https://dev-help-desk.herokuapp.com/api/users/:userId/tickets
 
+- [ ] example returns:
+
+```js
+{
+    "id": 7,
+    "title": "Slack",
+    "description": "My userid is not working in Slack",
+    "ticketCategory": "technical",
+    "created_at": "2020-02-04 02:15:36",
+    "tried": "I did make an account but...",
+    "user_id": 13,
+    "resolved": false,
+    "helper_id": null
+}
+```
+
 ## put: update a ticket
 
 - https://dev-help-desk.herokuapp.com/api/users/:userId/tickets/:ticketId
 
+- [ ] example returns:
+
+```js
+{
+    "title": "Slack",
+    "description": "Slack id and password are not working",
+    "ticketCategory": "technical",
+    "tried": "I did make an account but..."
+}
+```
+
 ## delete: delete a ticket
 
 - https://dev-help-desk.herokuapp.com/api/users/:userId/tickets/:ticketId
+
+- [ ] example returns:
+
+```js
+{
+    "message": "successfuly deleted..."
+}
+```
 
 # for helpers/admin:
 
