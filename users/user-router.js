@@ -48,11 +48,13 @@ router.get('/:userId/tickets/:ticketId', authenticate, (req, res, next) => {
 // create a ticket for a user
 router.post('/:userId/tickets', authenticate, (req, res, next) => {
   const { userId } = req.params;
+  console.log('req.user.id', req.user.userId);
   if (userId === `${req.user.userId}`) {
     let ticket = req.body;
+
     ticket = {
       ...ticket,
-      user_id: req.user.userId
+      user_id: userId
     };
     User.addTicket(ticket)
       .then(item => res.status(201).json(item))
@@ -62,6 +64,7 @@ router.post('/:userId/tickets', authenticate, (req, res, next) => {
       message: 'The userId did not match!!'
     });
 });
+// .catch(err => next(err));
 
 // upate a ticket for a user
 router.put('/:userId/tickets/:ticketId', authenticate, (req, res, next) => {
