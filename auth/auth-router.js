@@ -16,7 +16,8 @@ router.post('/register', (req, res, next) => {
   Users.addUser(user)
     .then(saved => {
       console.log(saved);
-      res.status(201).json({ ...saved, password: '*******' });
+      const token = signToken(saved);
+      res.status(201).json({ ...saved, password: '*******', token });
     })
     .catch(error => {
       // res.send
@@ -36,7 +37,8 @@ router.post('/helpers/register', (req, res, next) => {
   Helpers.addHelper(helper)
     .then(saved => {
       // console.log('saved helper', saved)
-      res.status(201).json({ ...saved, password: '*******' });
+      const token = signToken(saved);
+      res.status(201).json({ ...saved, password: '*******', token });
     })
     .catch(error => {
       // console.log('caught')
