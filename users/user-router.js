@@ -58,7 +58,10 @@ router.post('/:userId/tickets', authenticate, (req, res, next) => {
     };
     User.addTicket(ticket)
       .then(item => res.status(201).json(item))
-      .catch(err => next(err));
+      .catch(err => {
+        console.log('err', err);
+        next(err);
+      });
   } else
     res.status(401).json({
       message: 'The userId did not match!!'
