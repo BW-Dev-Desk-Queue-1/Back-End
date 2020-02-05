@@ -1,20 +1,11 @@
 const router = require('express').Router();
 const User = require('./userModel');
+const Ticket = require('../tickets/ticketModel')
+
 const authenticate = require('../auth/authenticate-middleware.js');
 // console.log('here')
 
-router.get('/find', (req, res) => {
-  // console.log(req.query)
-  User.filterTickets(req.query.resolved)
-    .then(tickets => {
-      console.log('tickets', tickets)
-      if(tickets.length > 0) {
-        res.status(200).json(tickets)
-      } else {
-        res.status(500).json({message: `There are no ${req.query.resolved === 'true'? 'resolved': 'unresolved'} tickets`})
-      }
-    })
-})
+
 router.get('/', (req, res) => {
   User.find()
     .then(users => {
@@ -46,6 +37,8 @@ router.get('/:userId/tickets', authenticate, (req, res, next) => {
     });
 });
 module.exports = router;
+// FrontEnd proposed this api/tickets/:category
+// that translates to options for a dropdown menue for them.
 
 // get a single ticket information for a user
 router.get('/:userId/tickets/:ticketId', authenticate, (req, res, next) => {
@@ -69,7 +62,7 @@ router.post('/:userId/tickets', authenticate, (req, res, next) => {
       ...ticket,
       user_id: req.user.userId
     };
-    User.addTicket(ticket)
+    Ticket.addTicket(ticket)
       .then(item => res.status(201).json(item))
       .catch(err => next(err));
   } else
@@ -84,7 +77,7 @@ router.put('/:userId/tickets/:ticketId', authenticate, (req, res, next) => {
   if (userId === `${req.user.userId}`) {
     let ticket = req.body;
 
-    User.updateTicket(ticket, ticketId)
+    Ticket.updateTicket(ticket, ticketId)
       .then(item => res.status(200).json(item))
       .catch(err => next(err));
   } else
@@ -97,7 +90,7 @@ router.put('/:userId/tickets/:ticketId', authenticate, (req, res, next) => {
 router.delete('/:userId/tickets/:ticketId', authenticate, (req, res, next) => {
   const { userId, ticketId } = req.params;
   if (userId === `${req.user.userId}`) {
-    User.deleteTicket(ticketId)
+    Ticket.deleteTicket(ticketId)
       .then(item => res.status(200).json(item))
       .catch(err => next(err));
   } else
@@ -106,15 +99,3 @@ router.delete('/:userId/tickets/:ticketId', authenticate, (req, res, next) => {
     });
 });
 
-// my code
-router.get('/get', (req, res) => {
-  User.getAllTickets()
-    .then(tickets => {
-      res.status(200).json(tickets)
-      // console.log(tickets)
-    })
-    .catch(err => {
-      res.status(401).json({message: 'Cannot get tickets'})
-    })
-})
-//

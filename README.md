@@ -300,7 +300,7 @@ output from backend
 
 ## get: get all tickets
 
-- https://dev-help-desk.herokuapp.com/api/tickets/get
+- https://dev-help-desk.herokuapp.com/api/tickets/
 ```js
   [
     {
@@ -342,6 +342,33 @@ output from backend
 ## get: get a single ticket info with related reactions
 
 - https://dev-help-desk.herokuapp.com/api/tickets/:ticketId
+```js
+  {
+      "id": 3,
+      "title": "Slack",
+      "description": "My userid is not working in Slack",
+      "ticketCategory": "technical",
+      "created_at": "2020-02-04 01:42:22",
+      "tried": "I did make an account but...",
+      "user_id": 3,
+      "resolved": false,
+      "helper_id": 3,
+      "reactions": [
+          {
+              "id": 1,
+              "ticket_id": 3,
+              "created_at": "2020-02-04 01:42:22",
+              "notes": "I re-created userId and sent an email to student for trial with new password. will wait for confirmation from the student."
+          },
+          {
+              "id": 3,
+              "ticket_id": 3,
+              "created_at": "2020-02-04 01:42:22",
+              "notes": "the student confirmed the userId is working now"
+          }
+      ]
+  }
+```
 
 ## post: create a reaction
 
