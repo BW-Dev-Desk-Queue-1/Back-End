@@ -390,23 +390,39 @@ first few
 ## post: create a reaction
 
 - https://dev-help-desk.herokuapp.com/api/tickets/:ticketId/reactions
+input to backend
 ```js
 {
-	"ticket_id": 3,
 	"notes": "I'm a new another reaction"
 
 }
+```
+output to client
+```js
+  {
+      "id": 8,
+      "ticket_id": 2,
+      "created_at": "2020-02-05T21:28:45.030Z",
+      "notes": "I'm a new another reaction"
+  }
 ```
 
 ## put: update a reaction
 
 - https://dev-help-desk.herokuapp.com/api/tickets/:ticketId/reactions/:reactionId
+input to backend
 ```js
 {
-        "ticket_id": 3,
-        "created_at": "2020-02-05 18:53:14",
-        "notes": "I did this'"
+        "notes": "I did this"
     }
+```
+output to client
+```js
+  {
+    "notes": "I did this",
+    "created_at": "2020-02-05 21:31:19",
+    "ticket_id": 2
+}
 ```
 ## delete: delete a reaction
 

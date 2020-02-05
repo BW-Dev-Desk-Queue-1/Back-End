@@ -4,12 +4,14 @@ const Ticket = require('./ticketModel');
 const Reaction = require('../reactions/reactionModel')
 
 const authenticate = require('../auth/authenticate-middleware.js');
+const onlyFor = require('../auth/onlyFor');
+
 // ermaining endpoints for reactions and gettng all tickets
 
 // works locally
 // get all tickets with reactions
 // works locally
-router.get('/', (req, res) => {
+router.get('/', authenticate, onlyFor, (req, res) => {
     Ticket.getAllTickets()
         .then(tickets => {
 
@@ -23,7 +25,7 @@ router.get('/', (req, res) => {
       
 })
 // works locally
-router.get('/find', (req, res) => {
+router.get('/find', authenticate, onlyFor, (req, res) => {
     // console.log(req.query)
     Ticket.filterTickets(req.query.resolved)
       .then(tickets => {
@@ -41,7 +43,7 @@ router.get('/find', (req, res) => {
 // ask him for help if I really can't get his code
 // ## get: get a single ticket info with related reactions
 // works locally
-router.get('/:ticketId', (req, res) => {
+router.get('/:ticketId', authenticate, onlyFor, (req, res) => {
     // console.log('here', req.params.ticketId)
     Ticket.getIthTicketWithReactions(req.params.ticketId)
         .then(ithTickedWithReactions => {
@@ -59,7 +61,7 @@ router.get('/:ticketId', (req, res) => {
 // reaction crud here for the tickets
 // create a reaction
 // works locally
-router.post('/:ticketId/reactions/', (req, res) => {
+router.post('/:ticketId/reactions/', authenticate, onlyFor, (req, res) => {
     const { ticketId } = req.params;
     // console.log('here')
     // console.log(req.body)
@@ -76,14 +78,17 @@ router.post('/:ticketId/reactions/', (req, res) => {
 })
 // update a reaction
 // works locally
-router.put('/:ticketId/reactions/:reactionId', verifyId, (req, res) => {
+router.put('/:ticketId/reactions/:reactionId', authenticate, onlyFor, (req, res) => {
     const { ticketId, reactionId } = req.params;
     // console.log(req.bo dy, req.params)
     let reaction = req.body;
-
-    Reaction.updateReaction(reaction, reactionId)
-      .then(reaction => res.status(200).json(reaction))
-      .catch(err => res.status(500).json({error: err}));
+    Ticket.findByTicketId(ticketId)
+        .then(ticket => {
+            // console.log(ticket)
+            Reaction.updateReaction(reaction, reactionId)
+            .then(reaction => res.status(200).json(reaction))
+            .catch(err => res.status(500).json({error: err}));
+        })
 
 })
 // delete a reaction
