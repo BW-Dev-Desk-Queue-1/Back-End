@@ -428,6 +428,12 @@ output to client
 
 - https://dev-help-desk.herokuapp.com/api/tickets/:ticketId/reactions/:reactionId
 
+output to client
+```js
+  {
+      "message": "successfuly deleted..."
+  }
+```
 # Database Schema
 
 ## table: **users**
