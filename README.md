@@ -212,6 +212,7 @@ output from backend
 # for helpers/admin:
 
 ## get all users and its related tickets
+- https://dev-help-desk.herokuapp.com/api/users
 
 ```js
 [
