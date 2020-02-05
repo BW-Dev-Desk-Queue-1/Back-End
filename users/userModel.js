@@ -151,5 +151,6 @@ function updateTicket(ticket, ticketId) {
 function deleteTicket(ticketId) {
   return UserDb('tickets')
     .where('id', ticketId)
+    .first()
     .delete();
 }
