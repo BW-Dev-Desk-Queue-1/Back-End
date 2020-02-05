@@ -184,13 +184,13 @@ output from backend
 
 ```js
 {
-    "id": 7,
+    "id": 4,
     "title": "Slack",
     "description": "My userid is not working in Slack",
-    "ticketCategory": "technical",
-    "created_at": "2020-02-04 02:15:36",
+    "ticketCategory": "Other",
+    "created_at": "2020-02-05 18:12:13",
     "tried": "I did make an account but...",
-    "user_id": 13,
+    "user_id": 4,
     "resolved": false,
     "helper_id": null
 }
