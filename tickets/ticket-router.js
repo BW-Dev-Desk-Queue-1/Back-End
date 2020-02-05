@@ -61,7 +61,7 @@ router.get('/:ticketId', authenticate, onlyFor, (req, res) => {
 // reaction crud here for the tickets
 // create a reaction
 // works locally
-router.post('/:ticketId/reactions/', (req, res) => {
+router.post('/:ticketId/reactions/', authenticate, onlyFor, (req, res) => {
     const { ticketId } = req.params;
     // console.log('here')
     // console.log(req.body)
@@ -78,7 +78,7 @@ router.post('/:ticketId/reactions/', (req, res) => {
 })
 // update a reaction
 // works locally
-router.put('/:ticketId/reactions/:reactionId', (req, res) => {
+router.put('/:ticketId/reactions/:reactionId', authenticate, onlyFor, (req, res) => {
     const { ticketId, reactionId } = req.params;
     // console.log(req.bo dy, req.params)
     let reaction = req.body;
