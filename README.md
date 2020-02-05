@@ -235,19 +235,22 @@ output from backend
     id: 1,
     username: 'young123',
     password: '*******',
+    accessType: 'student',
     tickets: []
   },
   {
     id: 2,
     username: 'james123',
     password: '*******',
+    accessType: 'student',
     tickets: [
       {
         id: 2,
         title: 'progress report',
         description: 'my progress report is not updating since Jan. 2020',
-        ticketCategory: 'technical',
-        created_at: '2020-02-03T20:07:33.748Z',
+        ticketCategory: 'Other',
+        created_at: '2020-02-05 18:06:04',
+        tried: 'I restarted the computer',
         user_id: 2,
         resolved: false,
         helper_id: 1
@@ -258,13 +261,15 @@ output from backend
     id: 3,
     username: 'sunny123',
     password: '*******',
+    accessType: 'student',
     tickets: [
       {
         id: 1,
         title: 'registration question',
         description: 'When is the next registration deadline?',
-        ticketCategory: 'frontOffice',
-        created_at: '2020-02-03T20:07:33.748Z',
+        ticketCategory: 'Track',
+        created_at: '2020-02-05 18:06:04',
+        tried: '',
         user_id: 3,
         resolved: false,
         helper_id: 2
@@ -273,8 +278,9 @@ output from backend
         id: 3,
         title: 'Slack',
         description: 'My userid is not working in Slack',
-        ticketCategory: 'technical',
-        created_at: '2020-02-03T20:07:33.748Z',
+        ticketCategory: 'Equipment',
+        created_at: '2020-02-05 18:06:04',
+        tried: 'I did make an account but...',
         user_id: 3,
         resolved: false,
         helper_id: 3
@@ -283,33 +289,22 @@ output from backend
   },
   {
     id: 4,
-    username: 'a username',
+    username: 'young1122',
     password: '*******',
-    tickets: []
-  },
-  {
-    id: 6,
-    username: 'sam',
-    password: '*******',
-    tickets: []
-  },
-  {
-    id: 7,
-    username: 'sm',
-    password: '*******',
-    tickets: []
-  },
-  {
-    id: 8,
-    username: 'young1231',
-    password: '*******',
-    tickets: []
-  },
-  {
-    id: 9,
-    username: 'young1235',
-    password: '*******',
-    tickets: []
+    accessType: 'student',
+    tickets: [
+      {
+        id: 4,
+        title: 'Slack',
+        description: 'My userid is not working in Slack',
+        ticketCategory: null,
+        created_at: '2020-02-05 18:12:13',
+        tried: 'I did make an account but...',
+        user_id: 4,
+        resolved: false,
+        helper_id: null
+      }
+    ]
   }
 ];
 ```
