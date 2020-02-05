@@ -59,14 +59,14 @@ router.get('/:ticketId', (req, res) => {
 // reaction crud here for the tickets
 // create a reaction
 // works locally
-router.post('/:ticketId/reactions/', verifyId, (req, res) => {
-    // const { ticketId, reactionId } = req.params;
+router.post('/:ticketId/reactions/', (req, res) => {
+    const { ticketId } = req.params;
     // console.log('here')
     // console.log(req.body)
     let reaction = req.body;
     reaction = {
       ...reaction,
-      ticket_id: req.body.ticket_id
+      ticket_id: ticketId
     };
     Reaction.addReaction(reaction)
             .then(reaction => res.status(201).json(reaction))
@@ -91,13 +91,17 @@ router.put('/:ticketId/reactions/:reactionId', verifyId, (req, res) => {
 // stole template
 router.delete('/:ticketId/reactions/:reactionId', (req, res, next) => {
     const { ticketId, reactionId } = req.params;
-    if (ticketId === `${req.ticket.ticketId}`) {
+    console.log(req.params)
+    // find the ith reaction
+    // make sure it links to ticket id
+    // then delete it
+    if (ticketId === `${req.params.ticketId}`) {
         Reaction.deleteReaction(reactionId)
         .then(reaction => res.status(200).json(reaction))
         .catch(err => next(err));
     } else
       res.status(401).json({
-        message: 'The userId did not match!!'
+        message: 'The ticketId did not match!!'
       });
   });
 
@@ -111,7 +115,7 @@ function verifyId(req, res, next) {
         next()
     } else {
         res.status(401).json({
-            message: 'The ticketId did not match!!'
+            message: `The ticketId ${ticketId} did not match with the body ticket ${req.body.ticket_id}!!`
           });
     }
 }
