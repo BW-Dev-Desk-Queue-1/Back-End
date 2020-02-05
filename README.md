@@ -314,22 +314,100 @@ output from backend
 ];
 ```
 
-## get: get all tickets
+## get: get all tickets with related reactions
 
 - https://dev-help-desk.herokuapp.com/api/tickets
+first few
+
+```js
+[
+    {
+        "id": 1,
+        "title": "registration question",
+        "description": "When is the next registration deadline?",
+        "ticketCategory": "frontOffice",
+        "created_at": "2020-02-04 01:42:22",
+        "tried": "",
+        "user_id": 3,
+        "resolved": 0,
+        "helper_id": 2,
+        "reactions": [
+            {
+                "id": 2,
+                "ticket_id": 1,
+                "created_at": "2020-02-04 01:42:22",
+                "notes": "emailed to students with new registration information"
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "title": "progress report",
+        "description": "my progress report is not updating since Jan. 2020",
+        "ticketCategory": "technical",
+        "created_at": "2020-02-04 01:42:22",
+        "tried": "I restarted the computer",
+        "user_id": 2,
+        "resolved": 0,
+        "helper_id": 1,
+        "reactions": [
+            {
+                "id": 7,
+                "ticket_id": 2,
+                "created_at": "2020-02-05 19:04:13",
+                "notes": "I'm a new reaction"
+            }
+        ]
+    }
+]
+```
 
 ## get: get a single ticket info with related reactions
 
 - https://dev-help-desk.herokuapp.com/api/tickets/:ticketId
 
+```js
+  {
+    "id": 1,
+    "title": "registration question",
+    "description": "When is the next registration deadline?",
+    "ticketCategory": "frontOffice",
+    "created_at": "2020-02-04 01:42:22",
+    "tried": "",
+    "user_id": 3,
+    "resolved": false,
+    "helper_id": 2,
+    "reactions": [
+        {
+            "id": 2,
+            "ticket_id": 1,
+            "created_at": "2020-02-04 01:42:22",
+            "notes": "emailed to students with new registration information"
+        }
+    ]
+}
+```
 ## post: create a reaction
 
 - https://dev-help-desk.herokuapp.com/api/tickets/:ticketId/reactions
+```js
+{
+	"ticket_id": 3,
+	"notes": "I'm a new another reaction"
+
+}
+```
 
 ## put: update a reaction
 
 - https://dev-help-desk.herokuapp.com/api/tickets/:ticketId/reactions/:reactionId
-
+```js
+{
+        "ticket_id": 3,
+        "created_at": "2020-02-05 18:53:14",
+        "notes": "I did this'"
+    }
+```
 ## delete: delete a reaction
 
 - https://dev-help-desk.herokuapp.com/api/tickets/:ticketId/reactions/:reactionId
