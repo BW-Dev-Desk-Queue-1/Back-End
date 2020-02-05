@@ -59,14 +59,14 @@ router.get('/:ticketId', (req, res) => {
 // reaction crud here for the tickets
 // create a reaction
 // works locally
-router.post('/:ticketId/reactions/', verifyId, (req, res) => {
-    // const { ticketId, reactionId } = req.params;
+router.post('/:ticketId/reactions/', (req, res) => {
+    const { ticketId } = req.params;
     // console.log('here')
     // console.log(req.body)
     let reaction = req.body;
     reaction = {
       ...reaction,
-      ticket_id: req.body.ticket_id
+      ticket_id: ticketId
     };
     Reaction.addReaction(reaction)
             .then(reaction => res.status(201).json(reaction))
