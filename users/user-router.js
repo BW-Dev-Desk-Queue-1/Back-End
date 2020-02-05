@@ -4,7 +4,7 @@ const authenticate = require('../auth/authenticate-middleware.js');
 // middleware for admin and helpers only
 const onlyFor = require('../auth/onlyFor');
 
-router.get('/', (req, res) => {
+router.get('/', authenticate, onlyFor, (req, res) => {
   User.find()
     .then(users => {
       User.getUsersTickets(users).then(tickets => {
