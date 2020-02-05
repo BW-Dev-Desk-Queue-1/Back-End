@@ -23,9 +23,11 @@ what back-end returns
 
 ```js
 {
-    "username": "samm",
+    "id": 36,
+    "username": "young3324",
     "password": "*******",
-    "accessType": "student"
+    "accessType": "student",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjM2LCJ1c2VybmFtZSI6InlvdW5nMzMyNCIsInVzZXJBY2Nlc3NUeXBlIjoic3R1ZGVudCIsImlhdCI6MTU4MDg2NzcxNCwiZXhwIjoxNTgwOTU0MTE0fQ.Q6Fnw5Xt77kvicG7g20xCLa5Z0-MwKLH0_1TFtq482s"
 }
 ```
 
@@ -50,7 +52,8 @@ what back-end returns
 ```js
     {
     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQsInVzZXJuYW1lIjoic2FtbSIsInVzZXJBY2Nlc3NUeXBlIjoic3R1ZGVudCIsImlhdCI6MTU4MDc5MTY2MSwiZXhwIjoxNTgwODc4MDYxfQ.ZNacWbT2m9umvZDBnDe6l6j0D7fbfN8exInmyynmM6M",
-    "accessType": "student"
+    "accessType": "student",
+    "userId: 30
 }
 ```
 
@@ -70,11 +73,10 @@ input to backend
 what backend returns
 ```js
     {
-        "id": 15,
-        "username": "samssssssssss11",
-        "password": "*******",
-        "accessType": "helper"
-    }
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjE5LCJ1c2VybmFtZSI6InN1bjc3NzciLCJ1c2VyQWNjZXNzVHlwZSI6ImhlbHBlciIsImlhdCI6MTU4MDg2NzgxNCwiZXhwIjoxNTgwOTU0MjE0fQ.BJ8IkruLAcvi17QGT9sQ2_jAyQSOTJhu3SzVrcjhe8k",
+    "accessType": "helper",
+    "userId": 19
+}
 ```
 ## post:
 
@@ -92,9 +94,12 @@ input to backend
 output from backend
 ```js
     {
-        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjE1LCJ1c2VybmFtZSI6InNhbXNzc3Nzc3Nzc3MxMSIsInVzZXJBY2Nlc3NUeXBlIjoiaGVscGVyIiwiaWF0IjoxNTgwNzg4OTEyLCJleHAiOjE1ODA4NzUzMTJ9.Z7Ffe7KitE01y38lr46QUKAegW8tAOXYBN-Vd6tJDuU",
-        "accessType": "helper"
-    }
+    "id": 23,
+    "username": "young6670",
+    "password": "*******",
+    "accessType": "helper",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIzLCJ1c2VybmFtZSI6InlvdW5nNjY3MCIsInVzZXJBY2Nlc3NUeXBlIjoiaGVscGVyIiwiaWF0IjoxNTgwODY3NjE1LCJleHAiOjE1ODA5NTQwMTV9.bL-CYh3w_QiD_1jioh1oDRd1nAIEyXkH0ubNg1FN5Y8"
+}
 ```
 # priviate routes:
 
