@@ -355,7 +355,7 @@ output from backend
 - id: integer (auto-generated number)
 - title: string (not nullable, indexed)
 - description: string
-- ticketCategory: enumeration [technical, frontOffice] (default to 'frontOffice')
+- ticketCategory: enumeration [Equipment, People, Track,Finances, Other] (default to null)
 - created_at: timestamp
 - tried: string
 - user_id: integer (not nullable, foreign-key pointing to id in 'users' table)
