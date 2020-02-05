@@ -48,7 +48,8 @@ what back-end returns
     }
 ```
 
-  what backend returns
+what backend returns
+
 ```js
     {
     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQsInVzZXJuYW1lIjoic2FtbSIsInVzZXJBY2Nlc3NUeXBlIjoic3R1ZGVudCIsImlhdCI6MTU4MDc5MTY2MSwiZXhwIjoxNTgwODc4MDYxfQ.ZNacWbT2m9umvZDBnDe6l6j0D7fbfN8exInmyynmM6M",
@@ -63,6 +64,7 @@ what back-end returns
 
 https://dev-help-desk.herokuapp.com/api/helpers/login
 input to backend
+
 ```js
     {
     "username" : "samssssssssss11",
@@ -70,7 +72,9 @@ input to backend
     "accessType" : "helper"
     }
 ```
+
 what backend returns
+
 ```js
     {
     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjE5LCJ1c2VybmFtZSI6InN1bjc3NzciLCJ1c2VyQWNjZXNzVHlwZSI6ImhlbHBlciIsImlhdCI6MTU4MDg2NzgxNCwiZXhwIjoxNTgwOTU0MjE0fQ.BJ8IkruLAcvi17QGT9sQ2_jAyQSOTJhu3SzVrcjhe8k",
@@ -78,12 +82,14 @@ what backend returns
     "userId": 19
 }
 ```
+
 ## post:
 
 ## for helpers/admin
 
 https://dev-help-desk.herokuapp.com/api/helpers/register
 input to backend
+
 ```js
     {
     "username" : "samssssssssss11",
@@ -91,7 +97,9 @@ input to backend
     "accessType" : "helper"
     }
 ```
+
 output from backend
+
 ```js
     {
     "id": 23,
@@ -101,6 +109,7 @@ output from backend
     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIzLCJ1c2VybmFtZSI6InlvdW5nNjY3MCIsInVzZXJBY2Nlc3NUeXBlIjoiaGVscGVyIiwiaWF0IjoxNTgwODY3NjE1LCJleHAiOjE1ODA5NTQwMTV9.bL-CYh3w_QiD_1jioh1oDRd1nAIEyXkH0ubNg1FN5Y8"
 }
 ```
+
 # priviate routes:
 
 # for students/admin/helpers
@@ -175,13 +184,13 @@ output from backend
 
 ```js
 {
-    "id": 7,
+    "id": 4,
     "title": "Slack",
     "description": "My userid is not working in Slack",
-    "ticketCategory": "technical",
-    "created_at": "2020-02-04 02:15:36",
+    "ticketCategory": "Other",
+    "created_at": "2020-02-05 18:12:13",
     "tried": "I did make an account but...",
-    "user_id": 13,
+    "user_id": 4,
     "resolved": false,
     "helper_id": null
 }
@@ -214,9 +223,10 @@ output from backend
 }
 ```
 
-# for helpers/admin:
+# Access for helpers/admin ONLY:
 
 ## get all users and its related tickets
+
 - https://dev-help-desk.herokuapp.com/api/users
 
 ```js
@@ -423,7 +433,7 @@ first few
 - id: integer (auto-generated number)
 - title: string (not nullable, indexed)
 - description: string
-- ticketCategory: enumeration [technical, frontOffice] (default to 'frontOffice')
+- ticketCategory: enumeration [Equipment, People, Track,Finances, Other] (default to null)
 - created_at: timestamp
 - tried: string
 - user_id: integer (not nullable, foreign-key pointing to id in 'users' table)
