@@ -46,7 +46,8 @@ what back-end returns
     }
 ```
 
-  what backend returns
+what backend returns
+
 ```js
     {
     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQsInVzZXJuYW1lIjoic2FtbSIsInVzZXJBY2Nlc3NUeXBlIjoic3R1ZGVudCIsImlhdCI6MTU4MDc5MTY2MSwiZXhwIjoxNTgwODc4MDYxfQ.ZNacWbT2m9umvZDBnDe6l6j0D7fbfN8exInmyynmM6M",
@@ -60,6 +61,7 @@ what back-end returns
 
 https://dev-help-desk.herokuapp.com/api/helpers/login
 input to backend
+
 ```js
     {
     "username" : "samssssssssss11",
@@ -67,7 +69,9 @@ input to backend
     "accessType" : "helper"
     }
 ```
+
 what backend returns
+
 ```js
     {
         "id": 15,
@@ -76,12 +80,14 @@ what backend returns
         "accessType": "helper"
     }
 ```
+
 ## post:
 
 ## for helpers/admin
 
 https://dev-help-desk.herokuapp.com/api/helpers/register
 input to backend
+
 ```js
     {
     "username" : "samssssssssss11",
@@ -89,13 +95,16 @@ input to backend
     "accessType" : "helper"
     }
 ```
+
 output from backend
+
 ```js
     {
         "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjE1LCJ1c2VybmFtZSI6InNhbXNzc3Nzc3Nzc3MxMSIsInVzZXJBY2Nlc3NUeXBlIjoiaGVscGVyIiwiaWF0IjoxNTgwNzg4OTEyLCJleHAiOjE1ODA4NzUzMTJ9.Z7Ffe7KitE01y38lr46QUKAegW8tAOXYBN-Vd6tJDuU",
         "accessType": "helper"
     }
 ```
+
 # priviate routes:
 
 # for students/admin/helpers
@@ -212,6 +221,8 @@ output from backend
 # for helpers/admin:
 
 ## get all users and its related tickets
+
+- https://dev-help-desk.herokuapp.com/api/users
 
 ```js
 [
