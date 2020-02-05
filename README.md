@@ -223,10 +223,9 @@ output from backend
 }
 ```
 
-# for helpers/admin:
+# Access for helpers/admin ONLY:
 
 ## get all users and its related tickets
-- https://dev-help-desk.herokuapp.com/api/users
 
 - https://dev-help-desk.herokuapp.com/api/users
 
