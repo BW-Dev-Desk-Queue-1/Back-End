@@ -94,20 +94,27 @@ router.put('/:ticketId/reactions/:reactionId', authenticate, onlyFor, (req, res)
 // delete a reaction
 //
 // stole template
-router.delete('/:ticketId/reactions/:reactionId', (req, res, next) => {
+router.delete('/:ticketId/reactions/:reactionId', authenticate, onlyFor, (req, res, next) => {
     const { ticketId, reactionId } = req.params;
-    console.log(req.params)
+    // console.log(req.params)
     // find the ith reaction
+    Ticket.findByTicketId(ticketId)
+        .then(ticket => {
+            Reaction.deleteReaction(reactionId)
+            .then(reaction => res.status(200).json(reaction))
+            .catch(err => res.status(500).json({error: err}));
+
+        })
     // make sure it links to ticket id
     // then delete it
-    if (ticketId === `${req.params.ticketId}`) {
-        Reaction.deleteReaction(reactionId)
-        .then(reaction => res.status(200).json(reaction))
-        .catch(err => next(err));
-    } else
-      res.status(401).json({
-        message: 'The ticketId did not match!!'
-      });
+    // if (ticketId === `${req.params.ticketId}`) {
+    //     Reaction.deleteReaction(reactionId)
+    //     .then(reaction => res.status(200).json(reaction))
+    //     .catch(err => next(err));
+    // } else
+    //   res.status(401).json({
+    //     message: 'The ticketId did not match!!'
+    //   });
   });
 
 
