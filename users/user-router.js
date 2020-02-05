@@ -89,7 +89,11 @@ router.delete('/:userId/tickets/:ticketId', authenticate, (req, res, next) => {
   const { userId, ticketId } = req.params;
   if (userId === `${req.user.userId}`) {
     User.deleteTicket(ticketId)
-      .then(item => res.status(200).json(item))
+      .then(() =>
+        res.status(200).json({
+          message: 'succefully deleted'
+        })
+      )
       .catch(err => next(err));
   } else
     res.status(401).json({
