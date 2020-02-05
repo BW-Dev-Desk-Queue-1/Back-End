@@ -7,6 +7,7 @@ module.exports = {
     deleteReaction,
     findByReactionId
 }
+
 function findAllReactions() {
     return UserDb('reactions')
 }
@@ -24,14 +25,26 @@ function addReaction(reaction) {
 }
 
 function updateReaction(reaction, reactionId) {
-    // console.log('updating', reaction, reactionId)
-    return UserDb('reactions')
-      .update(reaction)
-      .where('id', reactionId)
-      .then(num => {
-        // console.log(num)
-        return  num ? reaction : { message: 'Failed to update in the server' }
-      });
+    // console.log(reaction, reactionId)
+    return findByReactionId(reactionId)
+        .then(myReaction => {
+            // console.log('here')
+            // console.log(myReaction)
+            // console.log(reaction)
+            return UserDb('reactions as r')
+                .where('r.id', reactionId)
+                .update({...reaction,
+                        created_at: myReaction.created_at,
+                        ticket_id: myReaction.ticket_id    
+                    })
+                .then(num => {
+                    return  num ? {...reaction,
+                        created_at: myReaction.created_at,
+                        ticket_id: myReaction.ticket_id    
+                    } : { message: 'Failed to update in the server' }
+
+                })
+        })
 }
 
 function deleteReaction(reactionId) {
