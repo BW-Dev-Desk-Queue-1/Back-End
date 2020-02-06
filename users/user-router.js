@@ -74,6 +74,7 @@ router.post('/:userId/tickets', authenticate, (req, res, next) => {
 // upate a ticket for a user
 router.put('/:userId/tickets/:ticketId', authenticate, (req, res, next) => {
   const { userId, ticketId } = req.params;
+  console.log(req.user)
   if (userId === `${req.user.userId}`) {
     let ticket = req.body;
 

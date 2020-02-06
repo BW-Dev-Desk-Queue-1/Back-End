@@ -15,6 +15,7 @@ function makeUserNamePasswordAndAccessType(username, password, accessType) {
 async function loginUser() {
     const x = await request(server)
                 .post('/api/helpers/login')
+                // send is the body
                 .send(makeUserNamePasswordAndAccessType('jake123', '123456', 'helper'))
                 .then(res => {
                     // console.log('status', res)
@@ -28,7 +29,7 @@ async function loginUser() {
 // messing it up
 // register works but can't be practically run with the others(will always just add another user)
 
-describe('server register', function() {
+describe('server login', function() {
     it('runs the test', function() {
         expect(true).toBe(true);
     })
@@ -50,22 +51,150 @@ describe('server register', function() {
         
         let x  = await loginUser()
         let { token, accessType, userId } = x
-        console.log(token, accessType, userId)
+        // console.log(token, accessType, userId)
         // console.log(Object.keys(x))
         await request(server)
                 .get('/api/tickets')
-                // send is the body
                 // set lets me put things in the header I believe
                 .set('authorization', token)
                 .then(res => {
                     // console.log(res.status)
-                    console.log(res.body)
+                    // console.log(res.body)
+                    expect(res.body).toHaveLength(res.body.length)
+                })
+        // console.log('done')
+        // return 0
+    })
+})
+describe('get all unresolved tickets', function() {
+    it('test get all tickets endpoint', async function() {
+        // const users = await db('users')
+        // if(users.length > 0) {
+        // console.log('length', users.length)
+
+        // }
+        // the user has already been registered
+        
+        let x  = await loginUser()
+        let { token, accessType, userId } = x
+        // console.log(token, accessType, userId)
+        // console.log(Object.keys(x))
+        await request(server)
+                .get('/api/tickets/find')
+
+                // set lets me put things in the header I believe
+                .set('authorization', token)
+                // query lets me set query params
+                .query({'resolved': 'false' })
+                .then(res => {
+                    // console.log(res.status)
+                    // console.log(res.body)
                     expect(res.body).toHaveLength(res.body.length)
                 })
         // console.log('done')
         // return 0
     })    
+
 })
+// get a ticket
+describe('get a tickets', function() {
+    it('test get ith tickets endpoint', async function() {
+        // const users = await db('users')
+        // if(users.length > 0) {
+        // console.log('length', users.length)
+
+        // }
+        // the user has already been registered
+        
+        let x  = await loginUser()
+        let { token, accessType, userId } = x
+        // console.log(token, accessType, userId)
+        // console.log(Object.keys(x))
+        await request(server)
+                .get('/api/tickets/2')
+
+                // set lets me put things in the header I believe
+                .set('authorization', token)
+                // query lets me set query params
+                // .query({'resolved': 'false' })
+                .then(res => {
+                    // console.log(res.status)
+                    // console.log(res.body)
+                    expect(Object.keys(res.body)).toHaveLength(Object.keys(res.body).length)
+                })
+        // console.log('done')
+        // return 0
+    })    
+
+})
+
+describe('add a reaction', function() {
+    it('test add a reaction endpoint', async function() {
+        // const users = await db('users')
+        // if(users.length > 0) {
+        // console.log('length', users.length)
+
+        // }
+        // the user has already been registered
+        
+        let x  = await loginUser()
+        let { token, accessType, userId } = x
+        // console.log(token, accessType, userId)
+        // console.log(Object.keys(x))
+        await request(server)
+        // /:ticketId/reactions/
+                .post('/api/tickets/2/reactions')
+                // set lets me put things in the header I believe
+                .set('authorization', token)
+                .send({notes: "I'm a testing reaction"})
+
+                // query lets me set query params
+                // .query({'resolved': 'false' })
+                .then(res => {
+                    // console.log(res.status)
+                    // console.log(res.body)
+                    expect(Object.keys(res.body)).toHaveLength(Object.keys(res.body).length)
+                })
+        // console.log('done')
+        // return 0
+    })    
+
+})
+describe('delete a reaction', function() {
+    it('test delete a reaction endpoint', async function() {
+        // const users = await db('users')
+        // if(users.length > 0) {
+        // console.log('length', users.length)
+
+        // }
+        // the user has already been registered
+        
+        let x  = await loginUser()
+        let { token, accessType, userId } = x
+        // console.log(token, accessType, userId)
+        // console.log(Object.keys(x))
+        await request(server)
+        // /:ticketId/reactions/
+                .delete('/api/tickets/2/reactions/3')
+                // set lets me put things in the header I believe
+                .set('authorization', token)
+                // .send({notes: "I'm a testing reaction"})
+
+                // query lets me set query params
+                // .query({'resolved': 'false' })
+                .then(res => {
+                    // console.log(res.status)
+                    // console.log(res)
+                    expect(res.status).toBe(200)
+
+                    // expect(Object.keys(res.body)).toHaveLength(Object.keys(res.body).length)
+                })
+        // console.log('done')
+        // return 0
+    })    
+
+})
+
 describe.skip('next one', function() {
     beforeEach(async () => {
         await db('users').truncate();

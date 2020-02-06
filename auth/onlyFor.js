@@ -1,7 +1,7 @@
 // middleware for admin and helpers only
 module.exports = (req, res, next) => {
   const userAccess = req.user.userAccessType;
-
+  // console.log(userAccess)
   let accessed = false;
   if (userAccess == 'helper' || userAccess === 'admin') accessed = true;
 

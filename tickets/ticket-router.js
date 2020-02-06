@@ -29,7 +29,7 @@ router.get('/find', authenticate, onlyFor, (req, res) => {
     // console.log(req.query)
     Ticket.filterTickets(req.query.resolved)
       .then(tickets => {
-        console.log('tickets', tickets)
+        // console.log('tickets', tickets)
         if(tickets.length > 0) {
           res.status(200).json(tickets)
         } else {
@@ -64,14 +64,16 @@ router.get('/:ticketId', authenticate, onlyFor, (req, res) => {
 router.post('/:ticketId/reactions/', authenticate, onlyFor, (req, res) => {
     const { ticketId } = req.params;
     // console.log('here')
-    // console.log(req.body)
+    // console.log(req)
     let reaction = req.body;
     reaction = {
       ...reaction,
       ticket_id: ticketId
     };
     Reaction.addReaction(reaction)
-            .then(reaction => res.status(201).json(reaction))
+            .then(reaction => {
+                // console.log(reaction)
+                res.status(201).json(reaction)})
             .catch(err => res.status(500).json({error: err}));
 
 
