@@ -26,7 +26,8 @@ async function loginUser() {
 }
 // makes sure these endpoints actually exist
 // messing it up
-// register works but can't be practically run with the others
+// register works but can't be practically run with the others(will always just add another user)
+
 describe('server register', function() {
     it('runs the test', function() {
         expect(true).toBe(true);
@@ -58,7 +59,7 @@ describe('server register', function() {
                 .set('authorization', token)
                 .then(res => {
                     // console.log(res.status)
-                    // console.log(res.body)
+                    console.log(res.body)
                     expect(res.body).toHaveLength(res.body.length)
                 })
         // console.log('done')
