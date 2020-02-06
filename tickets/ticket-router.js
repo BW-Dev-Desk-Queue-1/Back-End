@@ -83,12 +83,15 @@ router.post('/:ticketId/reactions/', authenticate, onlyFor, (req, res) => {
 router.put('/:ticketId/reactions/:reactionId', authenticate, onlyFor, (req, res) => {
     const { ticketId, reactionId } = req.params;
     // console.log(req.bo dy, req.params)
+    // console.log("here", req.body)
     let reaction = req.body;
     Ticket.findByTicketId(ticketId)
         .then(ticket => {
-            // console.log(ticket)
+            // console.log('before updating')
             Reaction.updateReaction(reaction, reactionId)
-            .then(reaction => res.status(200).json(reaction))
+            .then(reaction => {
+                // console.log(reaction)
+                res.status(200).json(reaction)})
             .catch(err => res.status(500).json({error: err}));
         })
 

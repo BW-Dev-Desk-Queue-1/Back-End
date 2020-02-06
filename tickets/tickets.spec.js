@@ -30,9 +30,9 @@ async function loginUser() {
 // register works but can't be practically run with the others(will always just add another user)
 
 describe('server login', function() {
-    it('runs the test', function() {
-        expect(true).toBe(true);
-    })
+    // it('runs the test', function() {
+    //     expect(true).toBe(true);
+    // })
     // beforeEach(async () => {
     //     await db('users').truncate();
     // })
@@ -160,6 +160,41 @@ describe('add a reaction', function() {
     })    
 
 })
+describe('update a reaction', function() {
+    it('test update a reaction endpoint', async function() {
+        // const users = await db('users')
+        // if(users.length > 0) {
+        // console.log('length', users.length)
+
+        // }
+        // the user has already been registered
+        
+        let x  = await loginUser()
+        let { token, accessType, userId } = x
+        // console.log(token, accessType, userId)
+        // console.log(Object.keys(x))
+        await request(server)
+        // /:ticketId/reactions/
+                .put('/api/tickets/2/reactions/2')
+                // set lets me put things in the header I believe
+                .set('authorization', token)
+                .send({notes: "I'm an adjusted test reaction"})
+
+                // query lets me set query params
+                // .query({'resolved': 'false' })
+                .then(res => {
+                    // console.log(res.status)
+                    // console.log(res.body)
+                    expect(res.status).toBe(200)
+
+                    // expect(Object.keys(res.body)).toHaveLength(Object.keys(res.body).length)
+                })
+        // console.log('done')
+        // return 0
+    })    
+
+})
+
 describe('delete a reaction', function() {
     it('test delete a reaction endpoint', async function() {
         // const users = await db('users')

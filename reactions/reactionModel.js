@@ -38,11 +38,15 @@ function updateReaction(reaction, reactionId) {
                         ticket_id: myReaction.ticket_id    
                     })
                 .then(num => {
+                    // console.log('added')
                     return  num ? {...reaction,
                         created_at: myReaction.created_at,
                         ticket_id: myReaction.ticket_id    
                     } : { message: 'Failed to update in the server' }
 
+                })
+                .catch(err => {
+                    return {error: err}
                 })
         })
 }
