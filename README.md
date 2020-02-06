@@ -463,3 +463,10 @@ output to client
 - ticket_id: integer (not nullable, foreign-key pointing to id in 'tickets' table)
 - created_at: timestamp
 - notes: string
+
+
+## setup testing
+npx knex migrate:rollback --env=testing
+npx knex migrate:latest  --env=testing
+npx knex seed:run --env=testing
+npm test

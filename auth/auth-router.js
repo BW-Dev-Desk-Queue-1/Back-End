@@ -12,11 +12,11 @@ router.post('/register', (req, res, next) => {
   const hash = bcrypt.hashSync(user.password, 5); // 2 ^ n
 
   user.password = hash;
-  // console.log(user)
+
   Users.addUser(user)
     .then(saved => {
-      console.log(saved);
-      const token = signToken(saved);
+
+        const token = signToken(saved);
       res.status(201).json({ ...saved, password: '*******', token });
     })
     .catch(error => {
@@ -89,6 +89,7 @@ function signToken(user) {
 }
 
 function sendResultToUser(req, res, next, user, password) {
+    // console.log(user, password, user.password, bcrypt.compareSync(password, user.password))
   if (user && bcrypt.compareSync(password, user.password)) {
     const token = signToken(user);
 
