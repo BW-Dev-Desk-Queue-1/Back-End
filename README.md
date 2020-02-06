@@ -6,7 +6,7 @@
 
 ## post:
 
-## for students
+## for students Register
 
 - /api/register
   sending to back-end
@@ -33,7 +33,7 @@ what back-end returns
 
 ## post:
 
-## for students
+## for students login
 
 - /api/login
 
@@ -60,7 +60,7 @@ what backend returns
 
 ## post:
 
-## for helpers/admin
+## for helpers/admin login
 
 https://dev-help-desk.herokuapp.com/api/helpers/login
 input to backend
@@ -85,7 +85,7 @@ what backend returns
 
 ## post:
 
-## for helpers/admin
+## for helpers/admin register
 
 https://dev-help-desk.herokuapp.com/api/helpers/register
 input to backend
@@ -176,7 +176,7 @@ output from backend
 }
 ```
 
-## post: create a ticket
+## post: create a ticket by student
 
 - https://dev-help-desk.herokuapp.com/api/users/:userId/tickets
 
@@ -196,7 +196,7 @@ output from backend
 }
 ```
 
-## put: update a ticket
+## put: update a ticket by student
 
 - https://dev-help-desk.herokuapp.com/api/users/:userId/tickets/:ticketId
 
@@ -211,7 +211,7 @@ output from backend
 }
 ```
 
-## delete: delete a ticket
+## delete: delete a ticket by student
 
 - https://dev-help-desk.herokuapp.com/api/users/:userId/tickets/:ticketId
 
@@ -225,7 +225,7 @@ output from backend
 
 # Access for helpers/admin ONLY:
 
-## get all users and its related tickets
+## get all users and its related tickets by helper
 
 - https://dev-help-desk.herokuapp.com/api/users
 
@@ -309,55 +309,55 @@ output from backend
 ];
 ```
 
-## get: get all tickets with related reactions
+## get: get all tickets with related reactions by helper
 
 - https://dev-help-desk.herokuapp.com/api/tickets
-first few
+  first few
 
 ```js
 [
-    {
-        "id": 1,
-        "title": "registration question",
-        "description": "When is the next registration deadline?",
-        "ticketCategory": "frontOffice",
-        "created_at": "2020-02-04 01:42:22",
-        "tried": "",
-        "user_id": 3,
-        "resolved": 0,
-        "helper_id": 2,
-        "reactions": [
-            {
-                "id": 2,
-                "ticket_id": 1,
-                "created_at": "2020-02-04 01:42:22",
-                "notes": "emailed to students with new registration information"
-            }
-        ]
-    },
-    {
-        "id": 2,
-        "title": "progress report",
-        "description": "my progress report is not updating since Jan. 2020",
-        "ticketCategory": "technical",
-        "created_at": "2020-02-04 01:42:22",
-        "tried": "I restarted the computer",
-        "user_id": 2,
-        "resolved": 0,
-        "helper_id": 1,
-        "reactions": [
-            {
-                "id": 7,
-                "ticket_id": 2,
-                "created_at": "2020-02-05 19:04:13",
-                "notes": "I'm a new reaction"
-            }
-        ]
-    }
-]
+  {
+    id: 1,
+    title: 'registration question',
+    description: 'When is the next registration deadline?',
+    ticketCategory: 'frontOffice',
+    created_at: '2020-02-04 01:42:22',
+    tried: '',
+    user_id: 3,
+    resolved: 0,
+    helper_id: 2,
+    reactions: [
+      {
+        id: 2,
+        ticket_id: 1,
+        created_at: '2020-02-04 01:42:22',
+        notes: 'emailed to students with new registration information'
+      }
+    ]
+  },
+  {
+    id: 2,
+    title: 'progress report',
+    description: 'my progress report is not updating since Jan. 2020',
+    ticketCategory: 'technical',
+    created_at: '2020-02-04 01:42:22',
+    tried: 'I restarted the computer',
+    user_id: 2,
+    resolved: 0,
+    helper_id: 1,
+    reactions: [
+      {
+        id: 7,
+        ticket_id: 2,
+        created_at: '2020-02-05 19:04:13',
+        notes: "I'm a new reaction"
+      }
+    ]
+  }
+];
 ```
 
-## get: get a single ticket info with related reactions
+## get: get a single ticket info with related reactions by helper
 
 - https://dev-help-desk.herokuapp.com/api/tickets/:ticketId
 
@@ -382,17 +382,34 @@ first few
     ]
 }
 ```
-## post: create a reaction
+
+## post: update a ticket by helper
+
+- https://dev-help-desk.herokuapp.com/api/tickets/:ticketId
+
+```js
+{
+    "title": "Slack12",
+    "description": "My userid is not working in Slack22",
+    "resolved": true,
+    "helper_id": 12
+}
+```
+
+## post: create a reaction by helper
 
 - https://dev-help-desk.herokuapp.com/api/tickets/:ticketId/reactions
-input to backend
+  input to backend
+
 ```js
 {
 	"notes": "I'm a new another reaction"
 
 }
 ```
+
 output to client
+
 ```js
   {
       "id": 8,
@@ -402,16 +419,19 @@ output to client
   }
 ```
 
-## put: update a reaction
+## put: update a reaction by helper
 
 - https://dev-help-desk.herokuapp.com/api/tickets/:ticketId/reactions/:reactionId
-input to backend
+  input to backend
+
 ```js
 {
         "notes": "I did this"
     }
 ```
+
 output to client
+
 ```js
   {
     "notes": "I did this",
@@ -419,7 +439,8 @@ output to client
     "ticket_id": 2
 }
 ```
-## delete: delete a reaction
+
+## delete: delete a reaction by helper
 
 - https://dev-help-desk.herokuapp.com/api/tickets/:ticketId/reactions/:reactionId
 

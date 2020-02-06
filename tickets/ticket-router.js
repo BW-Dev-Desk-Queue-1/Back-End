@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const Ticket = require('./ticketModel');
+const User = require('../users/userModel');
 
 const Reaction = require('../reactions/reactionModel')
 
@@ -124,5 +125,17 @@ function verifyId(req, res, next) {
           });
     }
 }
+// update a ticket by helper
+
+router.put('/:ticketId', authenticate, onlyFor, (req, res, next) => {
+  const {ticketId } = req.params;
+ 
+    let ticket = req.body;
+
+    User.updateTicket(ticket, ticketId)
+      .then(item => res.status(200).json(item))
+      .catch(err => next(err));
+  
+});
 
 module.exports = router
